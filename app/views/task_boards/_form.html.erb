@@ -12,9 +12,12 @@
   <% end %>
 
   <div class="field">
-    メモ：<%= f.text_area :taskText,  size: "30x1"%>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  	<table>
+  		<tr>
+  			<td>メモ：</td>
+  			<td><%= f.text_area :taskText,  size: "30x1"%></td>
+  			<td><%= f.submit "作成" %></td>
+  		</tr>
+  	</table>
   </div>
 <% end %>

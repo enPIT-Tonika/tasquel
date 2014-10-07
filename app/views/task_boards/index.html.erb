@@ -1,27 +1,19 @@
-<h1>Listing task_boards</h1>
+<h1>メモ一覧</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Tasktext</th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
-
+<table border="1">
   <tbody>
     <% @task_boards.each do |task_board| %>
       <tr>
         <td><%= task_board.taskText %></td>
         <!-- <td><%= link_to 'Show', task_board %></td> -->
-        <td><%= link_to 'Edit', edit_task_board_path(task_board) %></td>
-        <td><%= link_to 'Destroy', task_board, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+       <!-- <td><%= link_to 'Edit', edit_task_board_path(task_board) %></td> -->
+        <td><%= link_to '×', task_board, method: :delete, data: { confirm: '削除しますか?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
+<br>
 <%= render 'form' %>
 
 <br>
-
-<%= link_to 'New Task board', new_task_board_path %>

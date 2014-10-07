@@ -21,7 +21,8 @@ class TaskBoardsControllerTest < ActionController::TestCase
       post :create, task_board: { taskText: @task_board.taskText }
     end
 
-    assert_redirected_to task_board_path(assigns(:task_board))
+   # assert_redirected_to task_board_path(assigns(:task_board))
+    assert_redirected_to controller: "task_boards", action: "index"
   end
 
   test "should show task_board" do
