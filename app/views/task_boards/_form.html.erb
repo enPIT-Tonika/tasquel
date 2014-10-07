@@ -1,0 +1,23 @@
+<%= form_for(@task_board) do |f| %>
+  <% if @task_board.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@task_board.errors.count, "error") %> prohibited this task_board from being saved:</h2>
+
+      <ul>
+      <% @task_board.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+  	<table>
+  		<tr>
+  			<td>メモ：</td>
+  			<td><%= f.text_area :taskText,  size: "30x1"%></td>
+  			<td><%= f.submit "作成" %></td>
+  		</tr>
+  	</table>
+  </div>
+<% end %>
