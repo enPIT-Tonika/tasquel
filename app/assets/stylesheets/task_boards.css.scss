@@ -4,7 +4,8 @@
   .task{
       float:none;
       clear:both;
-      margin:15px 0px;
+      overflow:hidden;
+      margin:15px 0;
   }
     .t_icon{
       height:80px;
@@ -15,29 +16,22 @@
       -moz-border-radius: 3px;
       float:left;
     }
-    
-      .task .f_parts{
-      background-image:url(asset/images/f_parts.png);
+    .task .f_parts{
+      background-image:image-url("f_parts.png");
       width:14px;
       height:43px;
       margin:17px 0px 10px 10px;
       float:left;
     }
     .task .f_body{
-      background:#FFFFFF;
-      width:550px;
+      position:relative;
+      width:580px;
       margin:10px 0;
-      min-height:30px;
       float:left;
-      
-      text-align:left; 
-      padding:15px;
-      font-size:24px;
-      
+      background:#FFFFFF;
       border-radius: 10px;
       -webkit-border-radius: 10px;
       -moz-border-radius: 10px; 
-      
       /*グラデーションにしたい時　下のコードをアクティブにする。矢印込みだとパーツ増やす必要あり。
       background-image: -webkit-gradient(
             linear,
@@ -53,3 +47,54 @@
           background-image: linear-gradient(to bottom, #FCFCFC 0%, #DADAE3 100%);
       */
     }
+    .task .f_text{
+      float:left;
+      width:500px;
+      margin:0;
+      min-height:30px;
+      text-align:left; 
+      padding:15px;
+      font-size:24px;
+    }
+    .task .edit_del{
+      position:absolute;
+      right:5px;
+      text-align:center;
+      float:right;
+      width:26px;
+      height:22px;
+      padding:10px;
+      margin:10px;
+      background:#68757C;
+      color:#FFFFFF;
+      border-radius: 10px;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px; 
+    }
+
+/* footer */
+  #footer { 
+    background:#E8EDEF;
+    padding:10px;
+    height:70px;
+    color:#FFFFFF;
+    text-align:center;
+  } 
+  #footer .field{
+    width:90%;
+    margin:0px auto;
+    color:#333333;
+    font-size:30px;
+  }
+  .oneColLiqCtrHdr #footer .field #task_board_taskText{
+    margin-top:15px;
+    width:600px;
+    height:40px;
+    font-size:35px;
+  }
+  .oneColLiqCtrHdr #footer .field input{
+    width:100px;
+    height:35px;
+    padding:10px;
+    font-size:36px;
+  }
