@@ -1,3 +1,55 @@
 // Place all the styles related to the taskBoards controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+  .task{
+      float:none;
+      clear:both;
+      margin:15px 0px;
+  }
+    .t_icon{
+      height:80px;
+      width:80px;
+      background:#FFFFFF;
+      border-radius: 3px;
+      -webkit-border-radius: 3px;
+      -moz-border-radius: 3px;
+      float:left;
+    }
+    
+      .task .f_parts{
+      background-image:url(asset/images/f_parts.png);
+      width:14px;
+      height:43px;
+      margin:17px 0px 10px 10px;
+      float:left;
+    }
+    .task .f_body{
+      background:#FFFFFF;
+      width:550px;
+      margin:10px 0;
+      min-height:30px;
+      float:left;
+      
+      text-align:left; 
+      padding:15px;
+      font-size:24px;
+      
+      border-radius: 10px;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px; 
+      
+      /*グラデーションにしたい時　下のコードをアクティブにする。矢印込みだとパーツ増やす必要あり。
+      background-image: -webkit-gradient(
+            linear,
+            left top,
+            left bottom,
+            color-stop(0, #FCFCFC),
+            color-stop(1, #DADAE3)
+          );
+          background-image: -o-linear-gradient(bottom, #FCFCFC 0%, #DADAE3 100%);
+          background-image: -moz-linear-gradient(bottom, #FCFCFC 0%, #DADAE3 100%);
+          background-image: -webkit-linear-gradient(bottom, #FCFCFC 0%, #DADAE3 100%);
+          background-image: -ms-linear-gradient(bottom, #FCFCFC 0%, #DADAE3 100%);
+          background-image: linear-gradient(to bottom, #FCFCFC 0%, #DADAE3 100%);
+      */
+    }
