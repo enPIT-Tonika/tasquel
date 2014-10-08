@@ -1,19 +1,27 @@
-<h1>メモ一覧</h1>
+<div id="header">
+       <h1>メモ一覧</h1>
+    <!-- end #header --></div>
 
-<table border="1">
-  <tbody>
-    <% @task_boards.each do |task_board| %>
-      <tr>
-        <td><%= task_board.taskText %></td>
-        <!-- <td><%= link_to 'Show', task_board %></td> -->
-       <!-- <td><%= link_to 'Edit', edit_task_board_path(task_board) %></td> -->
-        <td><%= link_to '×', task_board, method: :delete, data: { confirm: '削除しますか?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div id="mainContent">
+
+<% @task_boards.each do |task_board| %>
+  <div class="task"> 
+    <div class="t_icon">
+        <!-- icon_p 人　icon_m　めも　icon_t　時計で差し替えが効きます -->
+        <img src="<%= asset_path "icon_p.png" %>" />
+    </div>
+    <div class="f_parts"></div>
+    <div class="f_body">    
+    <%= task_board.taskText %>
+    <%= link_to '×', task_board, method: :delete, data: { confirm: '削除しますか?' } %>
+    </div>
+  </div>
+<% end %>
+</div>
+    <div id="footer"><%= render 'form' %>
+    <!-- end #footer --></div>
 
 <br>
-<%= render 'form' %>
 
 <br>
+

@@ -13,3 +13,71 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+	font: 100% Verdana, Arial, Helvetica, sans-serif;
+	background:#0A0B0C;/* #CCD8E2;*/
+	margin: 0;
+	text-align: center;
+	color: #000000;
+	
+	/*余ったので使ってみる
+	background-image: -webkit-gradient(
+	  linear,
+	  left top,
+	  left bottom,
+	  color-stop(0, #FCFCFC),
+	  color-stop(1, #DADAE3)
+	);
+	background-image: -o-linear-gradient(bottom, #FCFCFC 0%, #DADAE3 100%);
+	background-image: -moz-linear-gradient(bottom, #FCFCFC 0%, #DADAE3 100%);
+	background-image: -webkit-linear-gradient(bottom, #FCFCFC 0%, #DADAE3 100%);
+	background-image: -ms-linear-gradient(bottom, #FCFCFC 0%, #DADAE3 100%);
+	background-image: linear-gradient(to bottom, #FCFCFC 0%, #DADAE3 100%);*/
+}
+
+/* centerArea */
+	.oneColLiqCtrHdr #container {
+	    background: #AAC7E0;
+		width: 1024px;
+		margin: 0 auto;
+	}
+
+/* header */
+	.oneColLiqCtrHdr #header {
+		background:#252F3A;
+		padding:0px;
+		height:90px;
+		color:#FFFFFF;
+	}
+	 .oneColLiqCtrHdr #header img{
+	    margin: 20px 0px 0px 0px;
+	 }
+	.oneColLiqCtrHdr #header h1 {
+		margin: 0;
+		padding: 23px 0;
+		text-align: center;
+	}
+	
+    /* maincontents */
+	.oneColLiqCtrHdr #mainContent {
+		padding:30px;
+		min-height:764px;
+	}
+
+
+
+
+
+
+/* footer */
+	.oneColLiqCtrHdr #footer { 
+		background:#E8EDEF;
+		padding:0px;
+		height:90px;
+		color:#FFFFFF;
+	} 
+	.oneColLiqCtrHdr #footer p {
+		margin: 0;
+		padding: 10px 0;
+	}
