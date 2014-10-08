@@ -16,26 +16,6 @@ ActiveRecord::Schema.define(version: 20141005142809) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "books", force: true do |t|
-    t.string   "title"
-    t.string   "author"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "facilities", force: true do |t|
-    t.string   "name"
-    t.string   "address"
-    t.string   "tel_no"
-    t.integer  "ostomate_toilet"
-    t.integer  "ccheer_toilet"
-    t.integer  "cbet_toilet"
-    t.integer  "wchair_lift"
-    t.integer  "wchair_escalator"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "task_boards", force: true do |t|
     t.text     "taskText"
     t.datetime "created_at"
