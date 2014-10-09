@@ -63,21 +63,6 @@ body {
 	.oneColLiqCtrHdr #mainContent {
 		padding:30px;
 		min-height:764px;
-	}
-
-
-
-
-
-
-/* footer */
-	.oneColLiqCtrHdr #footer { 
-		background:#E8EDEF;
-		padding:0px;
-		height:90px;
-		color:#FFFFFF;
-	} 
-	.oneColLiqCtrHdr #footer p {
-		margin: 0;
-		padding: 10px 0;
+		height:764px;
+		overflow:scroll;
 	}
