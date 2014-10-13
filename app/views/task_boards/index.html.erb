@@ -3,8 +3,9 @@
 <!-- end #header --></div>
 
 <div id="mainContent">
-<% @task_boards.each do |task_board| %>
-  <div class="task">
+  <ul>
+  <% @task_boards.each do |task_board| %>
+  <li class="task">
     <div class="t_icon">
         <!-- icon_p 人　icon_m　めも　icon_t　時計で差し替えが効きます -->
         <img src="<%= asset_path "icon_t.png" %>" />
@@ -18,8 +19,9 @@
         <%= link_to '×', task_board, method: :delete, data: { confirm: '削除しますか?' } %>
       </div>
     </div>
-  </div>
+  </li></br>
 <% end %>
+  </ul>
 </div>
 
 <div id="footer">
