@@ -1,13 +1,17 @@
 // Place all the styles related to the taskBoards controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-  .task{
-      float:none;
-      clear:both;
-      overflow:hidden;
-      margin:15px 0;
-  }
-    .t_icon{
+.oneColLiqCtrHdr #mainContent .task {
+    float:none;
+    clear:both;
+    width:700px;
+    margin:10px 0;
+    display:block;
+    background:none;
+    background-image:none;
+    border:none;
+ }
+    .oneColLiqCtrHdr #mainContent .task .t_icon{
       height:80px;
       width:80px;
       background:#FFFFFF;
