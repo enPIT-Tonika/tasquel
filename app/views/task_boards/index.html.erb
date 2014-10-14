@@ -1,28 +1,60 @@
+<link type="text/css" rel="stylesheet"
+  href="http://code.jquery.com/ui/1.10.3/themes/cupertino/jquery-ui.min.css" />
+<script type="text/javascript"
+  src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script type="text/javascript"
+  src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
+
+<head>
+  <meta charset="utf-8">
+  <title>jQuery UI Sortable - Default functionality</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <style>
+  #sortable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+  #sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.4em; height: 18px; }
+  #sortable li span { position: absolute; margin-left: -1.3em; }
+  </style>
+
+  <script>
+  $(function() {
+    $( "#sortable" ).sortable();
+    $( "#sortable" ).disableSelection();
+  });
+  </script>
+</head>
+
+
 <div id="header">
     <h1>メモ一覧</h1>
 <!-- end #header --></div>
 
+
 <div id="mainContent">
-  <ul>
-  <% @task_boards.each do |task_board| %>
-  <li class="task">
-    <div class="t_icon">
-        <!-- icon_p 人　icon_m　めも　icon_t　時計で差し替えが効きます -->
-        <img src="<%= asset_path "icon_t.png" %>" />
+<ul id="sortable">
+	<% @task_boards.each do |task_board| %>
+<li class="task">
+ 	<span class="ui-icon ui-icon-arrowthick-2-n-s"></span>
+  	<div class="t_icon">
+       	<!-- icon_p 人　icon_m　めも　icon_t　時計で差し替えが効きます -->
+       	<img src="<%= asset_path "icon_t.png" %>" />
     </div>
     <div class="f_parts"></div>
     <div class="f_body">
-      <div class="f_text">
-        <%= task_board.taskText %>
-      </div>
-      <div class="edit_del">
-        <%= link_to '×', task_board, method: :delete, data: { confirm: '削除しますか?' } %>
-      </div>
-    </div>
-  </li></br>
+  		<div class="f_text">
+       		<%= task_board.taskText %>
+    	</div>
+    	<div class="edit_del">
+        	<%= link_to '×', task_board, method: :delete, data: { confirm: '削除しますか?' } %>
+      	</div>
+	</div>
+</li></br>
 <% end %>
-  </ul>
-</div>
+</ul>
+</div>	
+
 
 <div id="footer">
   <%= render 'form' %>
