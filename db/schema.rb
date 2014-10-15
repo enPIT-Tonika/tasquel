@@ -23,6 +23,19 @@ ActiveRecord::Schema.define(version: 20141015104527) do
     t.datetime "updated_at"
   end
 
+  create_table "facilities", force: true do |t|
+    t.string   "name"
+    t.string   "address"
+    t.string   "tel_no"
+    t.integer  "ostomate_toilet"
+    t.integer  "ccheer_toilet"
+    t.integer  "cbet_toilet"
+    t.integer  "wchair_lift"
+    t.integer  "wchair_escalator"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "families", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
