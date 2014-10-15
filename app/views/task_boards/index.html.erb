@@ -1,9 +1,25 @@
+<% content_for :header do %>
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+  <style>
+  #sortable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+  #sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.4em; height: 18px; }
+  #sortable li span { position: absolute; margin-left: -1.3em; }
+</style>
+ <script>
+  $(function() {
+    $( "#sortable" ).sortable();
+$( "#sortable" ).disableSelection();
+  });
+ </script>
+<% end %>
+
 <div id="header">
     <h1>メモ一覧</h1>
 <!-- end #header --></div>
 
 <div id="mainContent">
-  <ul>
+  <ul  id="sortable">
   <% @task_boards.each do |task_board| %>
   <li class="task">
     <div class="t_icon">
