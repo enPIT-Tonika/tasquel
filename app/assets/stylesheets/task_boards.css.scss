@@ -12,6 +12,7 @@
     border:none;
  }
     .oneColLiqCtrHdr #mainContent .task .t_icon{
+      position:relative;
       height:80px;
       width:80px;
       background:#FFFFFF;
@@ -29,7 +30,7 @@
     }
     .task .f_body{
       position:relative;
-      width:580px;
+      width:570px;
       margin:10px 0;
       float:left;
       background:#FFFFFF;
@@ -51,20 +52,31 @@
           background-image: linear-gradient(to bottom, #FCFCFC 0%, #DADAE3 100%);
       */
     }
+    .task .f_user{
+      width:100%;
+      position:solid;
+      right:0px;
+      bottom:0px;
+      color:#ffffff;
+      background:#000055;
+      padding:5px 0;
+      height:18px;
+      font-size:18px;
+    }
     .task .f_text{
       float:left;
-      width:500px;
-      margin:0;
+      width:470px;
       min-height:30px;
       text-align:left; 
       padding:15px;
       font-size:24px;
+       line-height:35px;
     }
+   
     .task .edit_del{
       position:absolute;
       right:5px;
       text-align:center;
-      float:right;
       width:26px;
       height:22px;
       padding:10px;
@@ -75,6 +87,10 @@
       -webkit-border-radius: 10px;
       -moz-border-radius: 10px; 
     }
+    .task .edit_del a:link { color: #ffffff; }
+    .task .edit_del a:visited { color: #ffffff; }
+    .task .edit_del a:hover { color: #ffffff; }
+    .task .edit_del a:active { color: #ffffff; }
 
 /* footer */
   #footer { 
@@ -85,20 +101,43 @@
     text-align:center;
   } 
   #footer .field{
-    width:90%;
+    width:100%;
     margin:0px auto;
     color:#333333;
-    font-size:30px;
   }
+  #footer .field td{
+    font-size:21px;
+  }
+    #footer .field .t_memo{
+      text-aline:right;
+      width:75px;
+    }
+  #footer .field select{
+    height: 35px;
+    width:120px;
+    font-size: 100%;
+    padding: 0px;
+    border: 1px solid #B3B3B3;
+    border-radius: 4px;
+    text-indent: .01px;
+    text-overflow: "";
+}
   .oneColLiqCtrHdr #footer .field #task_board_taskText{
-    margin-top:15px;
-    width:600px;
-    height:40px;
+    margin-top:5px;
+    width:95%;
+    height:35px;
     font-size:35px;
   }
-  .oneColLiqCtrHdr #footer .field input{
-    width:100px;
-    height:35px;
-    padding:10px;
-    font-size:36px;
-  }
+  .oneColLiqCtrHdr #footer .field input[type="submit"]{
+    width:70px;
+    height:40px;
+    margin:5px 0px 5px 10px;
+    padding:3px 5px;
+    font-size:23px;
+    line-height:35px;
+   cursor:pointer;
+   border: 1px solid #555555;
+    border-radius: 5px;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px; 
+}
