@@ -11,5 +11,12 @@ class CreateTaskBoards < ActiveRecord::Migration
       t.references :name
       t.timestamps
     end
+    
+    change_table :task_boards do |t|
+      t.timestamp :time
+      t.text :taskText
+      t.references :name
+      t.timestamps
+    end
   end
 end
