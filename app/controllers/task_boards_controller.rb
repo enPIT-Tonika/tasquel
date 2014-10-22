@@ -5,6 +5,8 @@ class TaskBoardsController < ApplicationController
   # GET /task_boards.json
   def index
     @task_boards = TaskBoard.all
+    @task_with_time = TaskBoard.where("tasktime IS NOT NULL").order("tasktime")
+    @task_without_time = TaskBoard.where("tasktime IS NULL")
     @task_board = TaskBoard.new
     @families = Family.all
   end
@@ -27,6 +29,9 @@ class TaskBoardsController < ApplicationController
   # POST /task_boards.json
   def create
     @task_board = TaskBoard.new(task_board_params)
+    if task_board_params['tasktime(4i)'] == ''
+      @task_board.tasktime = nil
+    end
     respond_to do |format|
       if @task_board.save
         #format.html { redirect_to @task_board, notice: 'test Task board was successfully created.' }
