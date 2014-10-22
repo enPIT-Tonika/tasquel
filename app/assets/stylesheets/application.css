@@ -13,13 +13,14 @@
  *= require_tree .
  *= require_self
  */
+
 body {
 	font: 100% Verdana, Arial, Helvetica, sans-serif;
-	background:#0A0B0C;/* #CCD8E2;*/
+	background:#0A0B0C;
 	margin: 0;
 	text-align: center;
 	color: #000000;
-	background-image:image-url("images/logo_top.png");
+	background-image: url(logo_top.png);
 	background-position:left top;
 	background-repeat:no-repeat;
 	/*余ったので使ってみる
@@ -44,7 +45,7 @@ body {
 		width: 90%;
 		max-width:1280px;
 		margin: 0 auto;
-		background-image:image-url("logo_mini.png");
+		background-image:url("logo_mini.png");
 	    background-position: right bottom;
 	    background-repeat:no-repeat;
 	}
