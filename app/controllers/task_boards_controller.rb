@@ -72,6 +72,6 @@ class TaskBoardsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_board_params
-      params.require(:task_board).permit(:taskText, :family_id, :time)
+      params.require(:task_board).permit(:taskText, :family_id, :tasktime)
     end
 end

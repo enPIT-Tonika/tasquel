@@ -34,8 +34,8 @@ $( "#sortable" ).disableSelection();
     <div class="f_parts"></div>
     <div class="f_body">
     	 <div>
-    	 	<% if task_board.time != nil %>
-    	 	<%= task_board.time.strftime("%H:%M") %>
+    	 	<% if task_board.tasktime != nil %>
+    	 	<%= task_board.tasktime.strftime("%H:%M") %>
     	 	<% end %>
     	 </div>
       <div class="f_text">
