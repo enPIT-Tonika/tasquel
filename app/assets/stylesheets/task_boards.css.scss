@@ -1,16 +1,28 @@
 // Place all the styles related to the taskBoards controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.oneColLiqCtrHdr #mainContent .task {
+
+  .oneColLiqCtrHdr #mainContent #memos_area{
+     width:95%;
+     padding:0;
+     margin:0px auto;
+  }
+  
+/* 時間の関係あるフィールド */  
+.oneColLiqCtrHdr #mainContent #sortable{
+     float:left;
+     min-width:530px;
+  }
+  .oneColLiqCtrHdr #mainContent .task {
+    display:block;
+    margin:0;
+    padding:5px;
     float:none;
     clear:both;
-    width:700px;
-    margin:10px 0;
-    display:block;
     background:none;
     background-image:none;
     border:none;
- }
+  }
     .oneColLiqCtrHdr #mainContent .task .t_icon{
       position:relative;
       height:80px;
@@ -30,7 +42,7 @@
     }
     .task .f_body{
       position:relative;
-      width:570px;
+      width:80%;
       margin:10px 0;
       float:left;
       background:#FFFFFF;
@@ -65,12 +77,12 @@
     }
     .task .f_text{
       float:left;
-      width:470px;
+      width:85%;
+      margin:0;
       min-height:30px;
       text-align:left; 
       padding:15px;
       font-size:24px;
-       line-height:35px;
     }
    
     .task .edit_del{
@@ -92,21 +104,58 @@
     .task .edit_del a:hover { color: #ffffff; }
     .task .edit_del a:active { color: #ffffff; }
 
-/* footer */
-  #footer { 
-    background:#E8EDEF;
-    padding:10px;
-    height:70px;
-    color:#FFFFFF;
+
+/* 時間の関係しないフィールド */
+  .oneColLiqCtrHdr #mainContent #memo_noTime{
+    float:right;
+    min-width:400px;
+    margin:20px auto 0px auto;
+    padding:0px;
+     background-color:#eeeeee;
+    border-radius: 9px;
+    -webkit-border-radius: 9px;
+    -moz-border-radius: 9px;
+    border:2px solid #efefef;
     text-align:center;
-  } 
+  }
+      .oneColLiqCtrHdr #mainContent #memo_noTime p{
+          margin:15px;
+          padding:0px;
+          font-size:26px;
+      }
+      #memo_noTime .task .f_body{
+        width:100%;
+        margin:7px auto;
+        min-height:30px;
+        text-align:center;
+        font-size:21px;
+      }
+
+
+
+/* footer */
+#footer { 
+  background:#E8EDEF;
+  padding:10px 20px;
+  height:100px;
+  color:#FFFFFF;
+  text-align:center;
+} 
   #footer .field{
-    width:100%;
-    margin:0px auto;
-    color:#333333;
+     width:90%;
+     margin:0px auto;
+     color:#333333;
+   font-size:30px;
+     text-align:left;
   }
   #footer .field td{
     font-size:21px;
+  }
+  .oneColLiqCtrHdr #footer .field #task_board_taskTime{
+    width:200px;
+    height:40px;
+    font-size:35px;
+    text-align:left;
   }
     #footer .field .t_memo{
       text-aline:right;

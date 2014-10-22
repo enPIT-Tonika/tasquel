@@ -5,7 +5,7 @@
   #sortable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
   #sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.4em; height: 18px; }
   #sortable li span { position: absolute; margin-left: -1.3em; }
-</style>
+ </style>
  <script>
   $(function() {
     $( "#sortable" ).sortable();
@@ -15,10 +15,15 @@ $( "#sortable" ).disableSelection();
 <% end %>
 
 <div id="header">
-    <h1>メモ一覧</h1>
+  <p id="days">10月18日</p>
+  <div id="memoArea">
+    <p>ここにメモが入ります</p>
+  </div>
 <!-- end #header --></div>
 
 <div id="mainContent">
+ <div id="memos_area">
+ 　<!--時間の関係あるメモ-->
   <ul  id="sortable">
   <% @task_boards.each do |task_board| %>
   <li class="task">
@@ -48,8 +53,24 @@ $( "#sortable" ).disableSelection();
   </li>
 <% end %>
   </ul>
+  
+  <!--時間の関係ないメモ-->
+  <ul id="memo_noTime">
+  	<p>時間の関係ないタスク</p>
+    <li class="task"> 
+      <div class="f_body">
+         <div class="f_text">
+            ここにはテキストが入ります。
+         </div>
+         <div class="edit_del">
+          ×
+         </div>
+      </div>
+    </li>
+  </ul>
+  
+ </div>
 </div>
-
 <div id="footer">
   <%= render 'form' %>
 <!-- end #footer --></div>
