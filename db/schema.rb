@@ -33,8 +33,7 @@ ActiveRecord::Schema.define(version: 20141021135232) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "family_id"
-    t.integer  "time_id"
-    t.datetime "time"
+    t.time "time"
   end
 
   add_index "task_boards", ["family_id"], name: "index_task_boards_on_family_id", using: :btree
