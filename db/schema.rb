@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141022123408) do
+ActiveRecord::Schema.define(version: 20141022135832) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20141022123408) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "family_id"
-    t.time     "time"
+    t.time     "tasktime"
   end
 
   add_index "task_boards", ["family_id"], name: "index_task_boards_on_family_id", using: :btree
