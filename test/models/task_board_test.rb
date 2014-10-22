@@ -1,7 +1,8 @@
 require 'test_helper'
+require 'shoulda'
 
 class TaskBoardTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+#class TaskBoardTest < ActiveRecord::TestCase
+  #familyテーブルとの関連を確認
+  should belong_to(:family)
 end

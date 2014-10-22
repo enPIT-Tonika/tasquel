@@ -14,35 +14,36 @@ $( "#sortable" ).disableSelection();
  </script>
 <% end %>
 
-
 <div id="header">
     <h1>メモ一覧</h1>
 <!-- end #header --></div>
 
-
 <div id="mainContent">
-<ul id="sortable">
-	<% @task_boards.each do |task_board| %>
-<li class="task">
- 	<span class="ui-icon ui-icon-arrowthick-2-n-s"></span>
-  	<div class="t_icon">
-       	<!-- icon_p 人　icon_m　めも　icon_t　時計で差し替えが効きます -->
-       	<img src="<%= asset_path "icon_t.png" %>" />
+  <ul  id="sortable">
+  <% @task_boards.each do |task_board| %>
+  <li class="task">
+    <div class="t_icon">
+        <!-- icon_p 人　icon_m　めも　icon_t　時計で差し替えが効きます -->
+        <img src="<%= asset_path "icon_p.png" %>" />
+        <span class="f_user">
+        <% if task_board.family_id != nil %>
+        	<%= task_board.family.name %>
+        <% end %>
+        </span>
     </div>
     <div class="f_parts"></div>
     <div class="f_body">
-  		<div class="f_text">
-       		<%= task_board.taskText %>
-    	</div>
-    	<div class="edit_del">
-        	<%= link_to '×', task_board, method: :delete, data: { confirm: '削除しますか?' } %>
-      	</div>
-	</div>
-</li></br>
+      <div class="f_text">
+        <%= task_board.taskText %>
+      </div>
+      <div class="edit_del">
+        <%= link_to '×', task_board, method: :delete, data: { confirm: '削除しますか?' } %>
+      </div>
+    </div>
+  </li>
 <% end %>
-</ul>
-</div>	
-
+  </ul>
+</div>
 
 <div id="footer">
   <%= render 'form' %>

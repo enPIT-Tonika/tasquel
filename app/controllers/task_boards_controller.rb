@@ -6,6 +6,7 @@ class TaskBoardsController < ApplicationController
   def index
     @task_boards = TaskBoard.all
     @task_board = TaskBoard.new
+    @families = Family.all
   end
 
   # GET /task_boards/1
@@ -26,7 +27,6 @@ class TaskBoardsController < ApplicationController
   # POST /task_boards.json
   def create
     @task_board = TaskBoard.new(task_board_params)
-
     respond_to do |format|
       if @task_board.save
         #format.html { redirect_to @task_board, notice: 'test Task board was successfully created.' }
@@ -72,6 +72,6 @@ class TaskBoardsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_board_params
-      params.require(:task_board).permit(:taskText)
+      params.require(:task_board).permit(:taskText, :family_id)
     end
 end

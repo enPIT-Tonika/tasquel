@@ -41,3 +41,7 @@ gem 'spring',        group: :development
 gem 'i18n'
 gem 'rails_12factor', group: :production
 ruby '2.1.2'
+
+group :test do
+  gem "shoulda"
+end
