@@ -1,29 +1,29 @@
-tasqual
+tasquel
 ===========
 [![Build Status](https://travis-ci.org/enPIT-Tonika/tasquel.svg?branch=master)](https://travis-ci.org/enPIT-Tonika/tasquel)
 
-# ŠT—v
-Tas-Quel‚ÍA‚²‰Æ’ë‚Å‰î•‚ğs‚¤lŒü‚¯‚É‰îŒìÒE‰î•Ò‚Ì‚²©‘î‚Æ‚²—˜—p{İ‚â‰îŒì‘ÎÛÒ
-‚ª’Ê‰@‚µ‚Ä‚¢‚é•a‰@‚È‚Ç‚ğ¦‚·’n}•\¦A‚¨–òƒ`ƒFƒbƒNƒŠƒXƒgAƒ^ƒXƒNƒŠƒXƒg‚âƒ^ƒXƒN‚¨’m‚ç‚¹‹@”\
-“™‚ğ’ñ‹Ÿ‚·‚éWebƒT[ƒrƒX‚Å‚·B
+# æ¦‚è¦
+Tas-Quelã¯ã€ã”å®¶åº­ã§ä»‹åŠ©ã‚’è¡Œã†äººå‘ã‘ã«ä»‹è­·è€…ãƒ»ä»‹åŠ©è€…ã®ã”è‡ªå®…ã¨ã”åˆ©ç”¨æ–½è¨­ã‚„ä»‹è­·å¯¾è±¡è€…
+ãŒé€šé™¢ã—ã¦ã„ã‚‹ç—…é™¢ãªã©ã‚’ç¤ºã™åœ°å›³è¡¨ç¤ºã€ãŠè–¬ãƒã‚§ãƒƒã‚¯ãƒªã‚¹ãƒˆã€ã‚¿ã‚¹ã‚¯ãƒªã‚¹ãƒˆã‚„ã‚¿ã‚¹ã‚¯ãŠçŸ¥ã‚‰ã›æ©Ÿèƒ½
+ç­‰ã‚’æä¾›ã™ã‚‹Webã‚µãƒ¼ãƒ“ã‚¹ã§ã™ã€‚
 
-‰îŒìÒ‚Ì‚¨¢˜b‚ğ‚·‚é‰î•Ò‘¤‚Ì•‰’S‚ğŒ¸‚ç‚·Tas-Quel‚Æ‚¢‚¤ƒvƒƒ_ƒNƒg‚ÍAWebƒuƒ‰ƒEƒU\
-‚©‚ç‚¢‚Â‚Å‚àŒ©‚ç‚êA‘€ì«(UI/UX)A‰î•‚·‚é‰Æ‘°ŠÔ‚Å‚Ì‹¤—LA˜AŒg‹@”\‚ğ’ñ‹Ÿ’v‚µ‚Ü‚·B
+ä»‹è­·è€…ã®ãŠä¸–è©±ã‚’ã™ã‚‹ä»‹åŠ©è€…å´ã®è² æ‹…ã‚’æ¸›ã‚‰ã™Tas-Quelã¨ã„ã†ãƒ—ãƒ­ãƒ€ã‚¯ãƒˆã¯ã€Webãƒ–ãƒ©ã‚¦ã‚¶\
+ã‹ã‚‰ã„ã¤ã§ã‚‚è¦‹ã‚‰ã‚Œã€æ“ä½œæ€§(UI/UX)ã€ä»‹åŠ©ã™ã‚‹å®¶æ—é–“ã§ã®å…±æœ‰ã€é€£æºæ©Ÿèƒ½ã‚’æä¾›è‡´ã—ã¾ã™ã€‚
 
-# ƒT[ƒrƒXURL
+# ã‚µãƒ¼ãƒ“ã‚¹URL
 [http://tasquel.herokuapp.com/](http://tasquel.herokuapp.com/)
 
-# XV—š—ğ
-2014-10-10 : Splint#2 / ƒTƒCƒgã‚Åƒƒ‚‚ğ“ü—Í‚Å‚«‚é‚æ‚¤‚ÉÀ‘•‚µ‚Ü‚µ‚½B
+# æ›´æ–°å±¥æ­´
+2014-10-10 : Splint#2 / ã‚µã‚¤ãƒˆä¸Šã§ãƒ¡ãƒ¢ã‚’å…¥åŠ›ã§ãã‚‹ã‚ˆã†ã«å®Ÿè£…ã—ã¾ã—ãŸã€‚
 
-# ŠJ”­ƒƒ“ƒo[
-Product Owner:Yasuaki Watanabe
-Scrum Master:Yoshiki Eguchi
-Team member:Yasuko Soeno
-Team member:Shota Kojihara
+# é–‹ç™ºãƒ¡ãƒ³ãƒãƒ¼
+- Product Owner:Yasuaki Watanabe
+- Scrum Master:Yoshiki Eguchi
+- Team member:Yasuko Soeno
+- Team member:Shota Kojihara
 
-# ƒ‰ƒCƒZƒ“ƒX
-‚±‚Ìƒ\ƒtƒgƒEƒFƒA‚ÍMITƒ‰ƒCƒZƒ“ƒX‚Ì‚à‚Æ’ñ‹Ÿ‚³‚ê‚Ä‚¢‚Ü‚·B
+# ãƒ©ã‚¤ã‚»ãƒ³ã‚¹
+ã“ã®ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã¯MITãƒ©ã‚¤ã‚»ãƒ³ã‚¹ã®ã‚‚ã¨æä¾›ã•ã‚Œã¦ã„ã¾ã™ã€‚
 
 This software is released under the MIT License.
 
