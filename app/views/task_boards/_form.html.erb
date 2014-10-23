@@ -14,6 +14,9 @@
   <div class="field">
   	<table>
   		<tr>
+  			<td>
+  				<%= f.time_select :tasktime, {include_blank: true} %>
+  			</td>
   			<td>人：</td>
   			<td><%= f.collection_select(:family_id, Family.all, :id, :name) %></td>
   			<td>時間：</td>

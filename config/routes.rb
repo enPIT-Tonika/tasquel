@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :memos
+
   resources :families
 
   resources :task_boards

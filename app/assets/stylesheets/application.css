@@ -20,7 +20,7 @@ body {
 	margin: 0;
 	text-align: center;
 	color: #000000;
-	background-image: url(logo_top.png);
+	background-image: url("logo_top.png");
 	background-position:left top;
 	background-repeat:no-repeat;
 	/*余ったので使ってみる
