@@ -20,7 +20,9 @@ body {
 	margin: 0;
 	text-align: center;
 	color: #000000;
-	
+	background-image: url("logo_top.png");
+	background-position: left top;
+	background-repeat:no-repeat;
 	/*余ったので使ってみる
 	background-image: -webkit-gradient(
 	  linear,
@@ -38,26 +40,48 @@ body {
 
 /* centerArea */
 	.oneColLiqCtrHdr #container {
-	    background: #AAC7E0;
-		width: 1024px;
+		background: #AAC7E0;
+	    width: 90%;
+		max-width:1280px;
 		margin: 0 auto;
+		background-image: url("logo_mini.png");
+	    background-position: right bottom;
+	    background-repeat:no-repeat;
 	}
 
 /* header */
 	.oneColLiqCtrHdr #header {
 		background:#252F3A;
 		padding:0px;
-		height:90px;
+		min-height:70px;
 		color:#FFFFFF;
+		padding:0 0 12px 0;
 	}
-	 .oneColLiqCtrHdr #header img{
-	    margin: 20px 0px 0px 0px;
-	 }
-	.oneColLiqCtrHdr #header h1 {
-		margin: 0;
-		padding: 23px 0;
+	.oneColLiqCtrHdr #header #days{
+		display:block;
+		width:95%;
+		text-align:left;
+		padding:10px 0 0 0;
+		margin:0px auto;
+		font-size:16px;
+	}
+	 .oneColLiqCtrHdr #header #memoArea{
+		width:95%;
+		min-height:50px;
+		margin:0px auto;
+		padding:0;
+		font-size:24px;
+		background-color:#FFFFFF;
+		border:2px solid #CFDCDD;
+		border-radius: 10px;
+		-webkit-border-radius: 10px;
+		-moz-border-radius: 10px;
+		color:#333C4D;
 		text-align: center;
-	}
+	 }
+	 .oneColLiqCtrHdr #header #memoArea p{
+	  margin:10px;
+	 }
 	
     /* maincontents */
 	.oneColLiqCtrHdr #mainContent {

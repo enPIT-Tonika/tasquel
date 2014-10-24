@@ -1,15 +1,32 @@
 // Place all the styles related to the taskBoards controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.oneColLiqCtrHdr #mainContent #memos_area{
+   width:95%;
+   padding:0;
+   margin:0px auto;
+}
+
+/* 時間の関係あるフィールド */  
+  .oneColLiqCtrHdr #mainContent #memo_time{
+     float:left;
+     min-width:530px;
+     margin:0px;
+     padding:5px;
+     width:55%;
+  }
+
 .oneColLiqCtrHdr #mainContent .task {
+    display:block;
+    margin:0;
+    padding:5px;
     float:none;
     clear:both;
-    width:700px;
-    margin:10px 0;
-    display:block;
     background:none;
     background-image:none;
     border:none;
+    width:100%;
  }
     .oneColLiqCtrHdr #mainContent .task .t_icon{
       position:relative;
@@ -30,7 +47,7 @@
     }
     .task .f_body{
       position:relative;
-      width:570px;
+      width:80%;
       margin:10px 0;
       float:left;
       background:#FFFFFF;
@@ -62,15 +79,18 @@
       padding:5px 0;
       height:18px;
       font-size:18px;
+      border-radius: 10px;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px; 
     }
     .task .f_text{
       float:left;
-      width:470px;
+      width:85%;
+      margin:0;
       min-height:30px;
       text-align:left; 
       padding:15px;
       font-size:24px;
-       line-height:35px;
     }
    
     .task .edit_del{
@@ -91,7 +111,50 @@
     .task .edit_del a:visited { color: #ffffff; }
     .task .edit_del a:hover { color: #ffffff; }
     .task .edit_del a:active { color: #ffffff; }
-
+    
+    /* 時間の関係しないフィールド */
+  .oneColLiqCtrHdr #mainContent #memo_noTime{
+    float:right;
+    min-width:400px;
+    width:40%;
+    border-radius: 9px;
+    -webkit-border-radius: 9px;
+    -moz-border-radius: 9px;
+    border:2px solid #efefef;
+    background:#eeeeee;
+  }
+  .oneColLiqCtrHdr #mainContent #memo_noTime p{
+   font-size:26px; width:100%;
+    padding:0px;
+  }
+  .oneColLiqCtrHdr #mainContent #sortable{
+    background:#f8f8f8;
+    margin:10px auto 10px auto;
+    width:95%;
+    padding:0px;
+    border-radius: 9px;
+    -webkit-border-radius: 9px;
+    -moz-border-radius: 9px;
+    border:2px solid #efefef;
+    text-align:center;
+    overflow:hidden;
+  }
+  .oneColLiqCtrHdr #mainContent #sortable p{
+    font-size:26px; width:100%;
+    padding:0px;
+  }
+  .oneColLiqCtrHdr #mainContent #sortable .task{
+    width:100%;
+    margin:7px auto;
+  }
+      #sortable .task .f_body{
+       width:70%;
+      /*min-height:30px;
+      margin:7px auto;
+      font-size:21px;*/
+    }
+    
+    
 /* footer */
   #footer { 
     background:#E8EDEF;
