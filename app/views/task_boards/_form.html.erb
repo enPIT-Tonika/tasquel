@@ -17,7 +17,7 @@
   			<td>
   				<%= f.time_select :tasktime, {include_blank: true} %>
   			</td>
-  			<td>人：</td>
+  			<td>人<%= link_to '+','../families' %>：</td>
   			<td>
   				<%= f.collection_select(:family_id, Family.all, :id, :name) %>
   			</td>
