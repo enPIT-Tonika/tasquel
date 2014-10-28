@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+<<<<<<< HEAD
   .oneColLiqCtrHdr #mainContent #memos_area{
      width:95%;
      padding:0;
@@ -14,6 +15,24 @@
      min-width:530px;
   }
   .oneColLiqCtrHdr #mainContent .task {
+=======
+.oneColLiqCtrHdr #mainContent #memos_area{
+   width:95%;
+   padding:0;
+   margin:0px auto;
+}
+
+/* 時間の関係あるフィールド */  
+  .oneColLiqCtrHdr #mainContent #memo_time{
+     float:left;
+     min-width:530px;
+     margin:0px;
+     padding:5px;
+     width:55%;
+  }
+
+.oneColLiqCtrHdr #mainContent .task {
+>>>>>>> spike2
     display:block;
     margin:0;
     padding:5px;
@@ -22,7 +41,12 @@
     background:none;
     background-image:none;
     border:none;
+<<<<<<< HEAD
   }
+=======
+    width:100%;
+ }
+>>>>>>> spike2
     .oneColLiqCtrHdr #mainContent .task .t_icon{
       position:relative;
       height:80px;
@@ -74,6 +98,9 @@
       padding:5px 0;
       height:18px;
       font-size:18px;
+      border-radius: 10px;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px; 
     }
     .task .f_text{
       float:left;
@@ -103,6 +130,7 @@
     .task .edit_del a:visited { color: #ffffff; }
     .task .edit_del a:hover { color: #ffffff; }
     .task .edit_del a:active { color: #ffffff; }
+<<<<<<< HEAD
 
 
 /* 時間の関係しないフィールド */
@@ -112,11 +140,35 @@
     margin:20px auto 0px auto;
     padding:0px;
      background-color:#eeeeee;
+=======
+    
+    /* 時間の関係しないフィールド */
+  .oneColLiqCtrHdr #mainContent #memo_noTime{
+    float:right;
+    min-width:400px;
+    width:40%;
+    border-radius: 9px;
+    -webkit-border-radius: 9px;
+    -moz-border-radius: 9px;
+    border:2px solid #efefef;
+    background:#eeeeee;
+  }
+  .oneColLiqCtrHdr #mainContent #memo_noTime p{
+   font-size:26px; width:100%;
+    padding:0px;
+  }
+  .oneColLiqCtrHdr #mainContent #sortable{
+    background:#f8f8f8;
+    margin:10px auto 10px auto;
+    width:95%;
+    padding:0px;
+>>>>>>> spike2
     border-radius: 9px;
     -webkit-border-radius: 9px;
     -moz-border-radius: 9px;
     border:2px solid #efefef;
     text-align:center;
+<<<<<<< HEAD
   }
       .oneColLiqCtrHdr #mainContent #memo_noTime p{
           margin:15px;
@@ -140,12 +192,43 @@
   height:100px;
   color:#FFFFFF;
   text-align:center;
+=======
+    overflow:hidden;
+  }
+  .oneColLiqCtrHdr #mainContent #sortable p{
+    font-size:26px; width:100%;
+    padding:0px;
+  }
+  .oneColLiqCtrHdr #mainContent #sortable .task{
+    width:100%;
+    margin:7px auto;
+  }
+      #sortable .task .f_body{
+       width:70%;
+      /*min-height:30px;
+      margin:7px auto;
+      font-size:21px;*/
+    }
+    
+    
+/* footer */
+#footer { 
+	background:#E8EDEF;
+	padding:10px 20px;
+	height:100px;
+	color:#FFFFFF;
+	text-align:center;
+>>>>>>> spike2
 } 
   #footer .field{
      width:90%;
      margin:0px auto;
      color:#333333;
+<<<<<<< HEAD
    font-size:30px;
+=======
+      font-size:30px;
+>>>>>>> spike2
      text-align:left;
   }
   #footer .field td{
@@ -153,10 +236,17 @@
   }
   .oneColLiqCtrHdr #footer .field #task_board_taskTime{
     width:200px;
+<<<<<<< HEAD
     height:40px;
     font-size:35px;
     text-align:left;
   }
+=======
+      height:40px;
+        font-size:35px;
+	  text-align:left;
+	  }
+>>>>>>> spike2
     #footer .field .t_memo{
       text-aline:right;
       width:75px;
@@ -171,6 +261,9 @@
     text-indent: .01px;
     text-overflow: "";
 }
+   .add_family{
+      font-size:16px;
+   }
   .oneColLiqCtrHdr #footer .field #task_board_taskText{
     margin-top:5px;
     width:95%;

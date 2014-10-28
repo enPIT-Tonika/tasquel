@@ -21,7 +21,11 @@ body {
 	text-align: center;
 	color: #000000;
 	background-image: url("logo_top.png");
+<<<<<<< HEAD
 	background-position:left top;
+=======
+	background-position: left top;
+>>>>>>> spike2
 	background-repeat:no-repeat;
 	/*余ったので使ってみる
 	background-image: -webkit-gradient(
@@ -41,11 +45,19 @@ body {
 
 /* centerArea */
 	.oneColLiqCtrHdr #container {
+<<<<<<< HEAD
 	    background: #AAC7E0;
 		width: 90%;
 		max-width:1280px;
 		margin: 0 auto;
 		background-image:url("logo_mini.png");
+=======
+		background: #AAC7E0;
+	    width: 90%;
+		max-width:1280px;
+		margin: 0 auto;
+		background-image: url("logo_mini.png");
+>>>>>>> spike2
 	    background-position: right bottom;
 	    background-repeat:no-repeat;
 	}
@@ -81,9 +93,15 @@ body {
 		text-align: center;
 	 }
 	 .oneColLiqCtrHdr #header #memoArea p{
+<<<<<<< HEAD
 	     margin:10px;
 	 }
 
+=======
+	  margin:10px;
+	 }
+	
+>>>>>>> spike2
     /* maincontents */
 	.oneColLiqCtrHdr #mainContent {
 		padding:10px;

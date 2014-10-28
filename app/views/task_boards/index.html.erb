@@ -15,6 +15,7 @@ $( "#sortable" ).disableSelection();
 <% end %>
 
 <div id="header">
+<<<<<<< HEAD
   <p id="days">10月18日</p>
   <div id="memoArea">
     <p>ここにメモが入ります</p>
@@ -58,20 +59,62 @@ $( "#sortable" ).disableSelection();
   </li>
 <% end %>
   </ul>
+=======
+   <p id="days">10月18日</p>
+    <div id="memoArea">
+   <p>ここにメモが入ります</p>
+ </div>
+<!-- end #header --></div>
 
-<ul  id="sortable">
-<% @task_without_time.each do |task_board| %>
-  <li class="task">
-    <div class="t_icon">
-        <!-- icon_p 人　icon_m　めも　icon_t　時計で差し替えが効きます -->
-        <img src="<%= asset_path "icon_p.png" %>" />
-        <span class="f_user">
-        <% if task_board.family_id != nil %>
-        	<%= task_board.family.name %>
-        <% end %>
-        </span>
-    </div>
-    <div class="f_parts"></div>
+<div id="mainContent">
+ <div id="memos_area">
+  <ul id="memo_time">
+	  <% @task_with_time.each do |task_board| %>
+	  <li class="task">
+	    <div class="t_icon">
+	        <!-- icon_p 人 icon_m めも icon_t 時計で差し替えが効きます -->
+	        <img src="<%= asset_path "icon_p.png" %>" />
+	        <span class="f_user">
+	        <% if task_board.family_id != nil %>
+	        	<%= task_board.family.name %>
+	        <% end %>
+	        </span>
+	    </div>
+	    <div class="f_parts"></div>
+	    <div class="f_body">
+	    	 <div>
+	    	 	<% if task_board.tasktime != nil %>
+	    	 	<%= task_board.tasktime.strftime("%H:%M") %>
+	    	 	<% end %>
+	    	 </div>
+	      <div class="f_text">
+	        <%= task_board.taskText %>
+	      </div>
+	      <div class="edit_del">
+	        <%= link_to '×', task_board, method: :delete, data: { confirm: '削除しますか?' } %>
+	      </div>
+	    </div>
+	  </li>
+	<% end %>
+	  </ul>
+>>>>>>> spike2
+
+
+  <div id="memo_noTime">
+   <p>時間の関係ないタスク</p>
+	<ul id="sortable">
+	<% @task_without_time.each do |task_board| %>
+	  <li class="task">
+	    <div class="t_icon">
+	        <!-- icon_p 人　icon_m　めも　icon_t　時計で差し替えが効きます -->
+	        <img src="<%= asset_path "icon_p.png" %>" />
+	        <span class="f_user">
+	        <% if task_board.family_id != nil %>
+	        	<%= task_board.family.name %>
+	        <% end %>
+	        </span>
+	    </div>
+	    <div class="f_parts"></div>
     <div class="f_body">
     	 <div>
     	 	<% if task_board.tasktime != nil %>
@@ -88,6 +131,7 @@ $( "#sortable" ).disableSelection();
   </li>
 <% end %>
   </ul>
+<<<<<<< HEAD
   
   <!--時間の関係ないメモ-->
   <ul id="memo_noTime">
@@ -105,6 +149,10 @@ $( "#sortable" ).disableSelection();
   </ul>
   
  </div>
+=======
+  </div>
+</div>
+>>>>>>> spike2
 </div>
 <div id="footer">
   <%= render 'form' %>

@@ -1,0 +1,16 @@
+                                                 データベース一覧
+           名前           |  所有者  | エンコーディング |  照合順序   | Ctype(変換演算子) |      アクセス権       
+--------------------------+----------+------------------+-------------+-------------------+-----------------------
+ postgres                 | postgres | UTF8             | ja_JP.utf8  | ja_JP.utf8        | 
+ rails_enpit_development  | vagrant  | UTF8             | ja_JP.utf8  | ja_JP.utf8        | 
+ rails_enpit_test         | vagrant  | UTF8             | ja_JP.utf8  | ja_JP.utf8        | 
+ team_e_enpit_development | vagrant  | UTF8             | ja_JP.utf8  | ja_JP.utf8        | 
+ team_e_enpit_tes         | vagrant  | UTF8             | ja_JP.utf8  | ja_JP.utf8        | 
+ team_e_enpit_test        | vagrant  | UTF8             | ja_JP.utf8  | ja_JP.utf8        | 
+ template0                | postgres | UTF8             | ja_JP.utf8  | ja_JP.utf8        | =c/postgres          +
+                          |          |                  |             |                   | postgres=CTc/postgres
+ template1                | postgres | UTF8             | ja_JP.utf8  | ja_JP.utf8        | =c/postgres          +
+                          |          |                  |             |                   | postgres=CTc/postgres
+ vagrant                  | vagrant  | UTF8             | ja_JP.utf-8 | ja_JP.utf-8       | 
+(9 行)
+
