@@ -12,19 +12,24 @@
   <% end %>
 
   <div class="field">
-  	<table>
-  		<tr>
-  			<td>
-  				<%= f.time_select :tasktime, {include_blank: true} %>
-  			</td>
-  			<td>人：</td>
-  			<td>
-  				<%= f.collection_select(:family_id, Family.all, :id, :name) %>
-  			</td>
-  			<td class="t_memo">メモ：</td>
-  			<td><%= f.text_area :taskText,  size: "30x1"%></td>
-  			<td><%= f.submit "作成" %></td>
-  		</tr>
-  	</table>
+            <table>
+           <tr>
+             <td>人：</td>
+             <td><%= f.collection_select(:family_id, Family.all, :id, :name) %>
+                <span class="add_family"><%= link_to 'メンバーを追加','../families' %></span>
+             </td>
+             <td>時間：</td>
+             <td colspan="1"><%= f.time_select :tasktime, {include_blank: true} %></td>
+             <td></td>
+             <td></td>
+            </tr>
+            <tr>
+             <td>メモ：</td>
+             <td colspan="3"><%= f.text_area :taskText,  size: "30x1"%></textarea></td>
+             <td></td>
+             <td></td>
+             <td><%= f.submit "作成" %></td>
+            </tr>
+         </table>
   </div>
 <% end %>
