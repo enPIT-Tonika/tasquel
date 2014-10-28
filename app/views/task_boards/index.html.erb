@@ -27,7 +27,7 @@ $( "#sortable" ).disableSelection();
 	  <% @task_with_time.each do |task_board| %>
 	  <li class="task">
 	    <div class="t_icon">
-	        <!-- icon_p 人　icon_m　めも　icon_t　時計で差し替えが効きます -->
+	        <!-- icon_p 人 icon_m めも icon_t 時計で差し替えが効きます -->
 	        <img src="<%= asset_path "icon_p.png" %>" />
 	        <span class="f_user">
 	        <% if task_board.family_id != nil %>
