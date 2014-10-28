@@ -156,21 +156,29 @@
     
     
 /* footer */
-  #footer { 
-    background:#E8EDEF;
-    padding:10px;
-    height:70px;
-    color:#FFFFFF;
-    text-align:center;
-  } 
+#footer { 
+	background:#E8EDEF;
+	padding:10px 20px;
+	height:100px;
+	color:#FFFFFF;
+	text-align:center;
+} 
   #footer .field{
-    width:100%;
-    margin:0px auto;
-    color:#333333;
+     width:90%;
+     margin:0px auto;
+     color:#333333;
+      font-size:30px;
+     text-align:left;
   }
   #footer .field td{
     font-size:21px;
   }
+  .oneColLiqCtrHdr #footer .field #task_board_taskTime{
+    width:200px;
+      height:40px;
+        font-size:35px;
+	  text-align:left;
+	  }
     #footer .field .t_memo{
       text-aline:right;
       width:75px;
@@ -185,6 +193,9 @@
     text-indent: .01px;
     text-overflow: "";
 }
+   .add_family{
+      font-size:16px;
+   }
   .oneColLiqCtrHdr #footer .field #task_board_taskText{
     margin-top:5px;
     width:95%;
