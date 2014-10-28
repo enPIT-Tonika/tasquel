@@ -2,11 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.oneColLiqCtrHdr #mainContent #memos_area{
-   width:95%;
-   padding:0;
-   margin:0px auto;
-}
+  .oneColLiqCtrHdr #mainContent #memos_area{
+     width:95%;
+     padding:0;
+     margin:0px auto;
+  }
 
 /* 時間の関係あるフィールド */  
   .oneColLiqCtrHdr #mainContent #memo_time{
@@ -28,6 +28,7 @@
     border:none;
     width:100%;
  }
+
     .oneColLiqCtrHdr #mainContent .task .t_icon{
       position:relative;
       height:80px;
@@ -111,6 +112,7 @@
     .task .edit_del a:visited { color: #ffffff; }
     .task .edit_del a:hover { color: #ffffff; }
     .task .edit_del a:active { color: #ffffff; }
+
     
     /* 時間の関係しないフィールド */
   .oneColLiqCtrHdr #mainContent #memo_noTime{
@@ -137,8 +139,29 @@
     -moz-border-radius: 9px;
     border:2px solid #efefef;
     text-align:center;
-    overflow:hidden;
   }
+      .oneColLiqCtrHdr #mainContent #memo_noTime p{
+          margin:15px;
+          padding:0px;
+          font-size:26px;
+      }
+      #memo_noTime .task .f_body{
+        width:100%;
+        margin:7px auto;
+        min-height:30px;
+        text-align:center;
+        font-size:21px;
+      }
+
+/* footer */
+#footer { 
+  background:#E8EDEF;
+  padding:10px 20px;
+  height:100px;
+  color:#FFFFFF;
+  text-align:center;
+    overflow:hidden;
+ }
   .oneColLiqCtrHdr #mainContent #sortable p{
     font-size:26px; width:100%;
     padding:0px;
