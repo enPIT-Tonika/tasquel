@@ -5,7 +5,7 @@ class MemosController < ApplicationController
   # GET /memos.json
   def index
    #@memos = Memo.all
-   @memos = Memo.order("create_at DESC").limit(1)
+   @memos = Memo.order("created_at DESC").limit(1)
   end
 
   # GET /memos/1
