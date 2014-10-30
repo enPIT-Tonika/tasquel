@@ -9,6 +9,8 @@ class TaskBoardsController < ApplicationController
     @task_without_time = TaskBoard.where("tasktime IS NULL")
     @task_board = TaskBoard.new
     @families = Family.all
+    @memos = Memo.order("created_at DESC").limit(1)
+    @memo = Memo.new
   end
 
   # GET /task_boards/1
@@ -23,6 +25,7 @@ class TaskBoardsController < ApplicationController
 
   # GET /task_boards/1/edit
   def edit
+  
   end
 
   # POST /task_boards
@@ -57,6 +60,8 @@ class TaskBoardsController < ApplicationController
         format.json { render json: @task_board.errors, status: :unprocessable_entity }
       end
     end
+    
+
   end
 
   # DELETE /task_boards/1

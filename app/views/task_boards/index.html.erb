@@ -16,7 +16,11 @@
 <div id="header">   
   <p id="days">10月18日</p>
   <div id="memoArea">
-   <p>ここにメモが入ります</p>
+    <%= render 'memoform' %>
+   	<% @memos.each do |memo| %>
+   	<li><%= memo.taskmemo %></li>
+   	<% end %>
+   	
   </div>
 <!-- end #header --></div>
 
