@@ -21,7 +21,7 @@ class MemosControllerTest < ActionController::TestCase
       post :create, memo: { taskmemo: @memo.taskmemo }
     end
 
-    assert_redirected_to memo_path(assigns(:memo))
+    assert_redirected_to controller: "task_boards", action: "index"
   end
 
   test "should show memo" do
