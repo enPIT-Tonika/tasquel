@@ -4,9 +4,10 @@
     		<% if @memo.errors.any? %>
     		<%= @memo.errors.message[:taskmemo][0] %>
     		<% end %>
+    		<%= m.submit '更新'%>
     	</p>
     	<p>
-    		<%= m.submit '更新'%>
+
     	</p>
 <% end %>
 
