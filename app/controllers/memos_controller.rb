@@ -29,7 +29,7 @@ class MemosController < ApplicationController
 
     respond_to do |format|
       if @memo.save
-        format.html { redirect_to @memo, notice: 'Memo was successfully created.' }
+        format.html { redirect_to task_boards_path, notice: 'Memo was successfully created.' }
         format.json { render :show, status: :created, location: @memo }
       else
         format.html { render :new }
