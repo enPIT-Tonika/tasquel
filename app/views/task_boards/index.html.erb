@@ -10,17 +10,23 @@
   $(function() {
    $( "#sortable" ).sortable();
    $( "#sortable" ).disableSelection();
-  });
+   $("#memo_taskmemo").click(function(event){
+ 	 $("#memo_taskmemo").css("opacity", 1);
+   });
+   $("#memo_taskmemo").blur(function(event){
+   	 $("#memo_taskmemo").css("opacity", 0);
+   });
+   $("#memoArea.submit").click(function(event){
+   	 $("#memo_taskmemo").css("opacity", 0);
+   });
+ });
  </script>
 <% end %>
 <div id="header">   
   <p id="days">10月18日</p>
   <div id="memoArea">
     <%= render 'memoform' %>
-   	<% @memos.each do |memo| %>
-   	<li><%= memo.taskmemo %></li>
-   	<% end %>
-   	
+   	<p><%= @memos[0].taskmemo %></p>
   </div>
 <!-- end #header --></div>
 
