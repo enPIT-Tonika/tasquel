@@ -32,7 +32,7 @@ class MemosController < ApplicationController
         format.html { redirect_to task_boards_path, notice: 'Memo was successfully created.' }
         format.json { render :show, status: :created, location: @memo }
       else
-        format.html { render :new }
+        format.html { redirect_to task_boards_path }
         format.json { render json: @memo.errors, status: :unprocessable_entity }
       end
     end
