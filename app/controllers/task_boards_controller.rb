@@ -40,10 +40,11 @@ class TaskBoardsController < ApplicationController
         #format.html { redirect_to @task_board, notice: 'test Task board was successfully created.' }
         format.html { redirect_to action: "index"}
         #format.json { render :show, status: :created, location: @task_board }
-      #else
+      else
         #format.html { render :new }
         #format.html { render :index }
-        #format.json { render json: @task_board.errors, status: :unprocessable_entity }
+        format.html { redirect_to task_boards_path }
+        format.json { render json: @task_board.errors, status: :unprocessable_entity }
       end
     end
   end
