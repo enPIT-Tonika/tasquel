@@ -9,7 +9,14 @@ class TaskBoardsController < ApplicationController
     @task_without_time = TaskBoard.where("tasktime IS NULL")
     @task_board = TaskBoard.new
     @families = Family.all
-    @memos = Memo.order("created_at DESC").limit(1)
+    #既存のメモが存在すれば最新のメモを取得
+    if Memo.count > 0
+      @last_memo = Memo.order("created_at DESC").limit(1)[0]
+    else
+      #メモが存在しなければ、ダミーのデータを格納
+      @last_memo = Memo.new({taskmemo: "ここに共有するメモを入力できます"})
+    end
+    
     @memo = Memo.new
   end
 
