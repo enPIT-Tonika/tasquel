@@ -9,6 +9,15 @@ class TaskBoardsController < ApplicationController
     @task_without_time = TaskBoard.where("tasktime IS NULL")
     @task_board = TaskBoard.new
     @families = Family.all
+    #既存のメモが存在すれば最新のメモを取得
+    if Memo.count > 0
+      @last_memo = Memo.order("created_at DESC").limit(1)[0]
+    else
+      #メモが存在しなければ、ダミーのデータを格納
+      @last_memo = Memo.new({taskmemo: "ここに共有するメモを入力できます"})
+    end
+    
+    @memo = Memo.new
   end
 
   # GET /task_boards/1
@@ -23,6 +32,7 @@ class TaskBoardsController < ApplicationController
 
   # GET /task_boards/1/edit
   def edit
+  
   end
 
   # POST /task_boards
@@ -37,10 +47,11 @@ class TaskBoardsController < ApplicationController
         #format.html { redirect_to @task_board, notice: 'test Task board was successfully created.' }
         format.html { redirect_to action: "index"}
         #format.json { render :show, status: :created, location: @task_board }
-      #else
+      else
         #format.html { render :new }
         #format.html { render :index }
-        #format.json { render json: @task_board.errors, status: :unprocessable_entity }
+        format.html { redirect_to task_boards_path }
+        format.json { render json: @task_board.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -57,6 +68,8 @@ class TaskBoardsController < ApplicationController
         format.json { render json: @task_board.errors, status: :unprocessable_entity }
       end
     end
+    
+
   end
 
   # DELETE /task_boards/1
