@@ -1,10 +1,13 @@
+# -*- coding: utf-8 -*-
 class TaskBoardsController < ApplicationController
   before_action :set_task_board, only: [:show, :edit, :update, :destroy]
 
   # GET /task_boards
   # GET /task_boards.json
+
   def index
-    @task_boards = TaskBoard.all
+    #@task_boards = TaskBoard.all
+    @task_boards = TaskBoard.rank(:row_order)
     @task_with_time = TaskBoard.where("tasktime IS NOT NULL").order("tasktime")
     @task_without_time = TaskBoard.where("tasktime IS NULL")
     @task_board = TaskBoard.new
@@ -82,6 +85,13 @@ class TaskBoardsController < ApplicationController
     end
   end
 
+  # ソート順を保存する処理を追加
+  def sort
+      @task_board = TaskBoard.find(params[:id])
+      @task_board.update(task_board_params)
+      render nothing: true
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_task_board
@@ -90,6 +100,7 @@ class TaskBoardsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_board_params
-      params.require(:task_board).permit(:taskText, :family_id, :tasktime)
+      #params.require(:task_board).permit(:taskText, :family_id, :tasktime)
+      params.require(:task_board).permit(:taskText, :family_id, :tasktime, :row_order_position)
     end
 end
