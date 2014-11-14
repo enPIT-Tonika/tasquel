@@ -3,11 +3,7 @@ tasquel
 [![Build Status](https://travis-ci.org/enPIT-Tonika/tasquel.svg?branch=master)](https://travis-ci.org/enPIT-Tonika/tasquel)
 
 # 概要
-介護が必要な家族のお世話をしていて、手伝いを他の家族に頼みづらい方向けのTasQuelというプロダクトは、
-介護に必要なタスクを家族間で共有するサービスです。
-このサービスはタスクを共有することで、家族間でのお世話の手伝いを促進し、
-紙のメモに残すのとは違い、
-Web上で必要な情報がいつでもすぐに確認することができます。
+毎日薬を飲んでいて、薬の飲み忘れを防ぎたい人向けのTasquelというプロダクトは、お薬リマインダーアプリです。 これは忘れずに薬を飲むよう教えてくれる機能を備えていて、普通のToDo管理ソフトとは違って、かわいいキャラクターが通知を行ってくれます。
 
 # サービスURL
 [http://tasquel.herokuapp.com/](http://tasquel.herokuapp.com/)
