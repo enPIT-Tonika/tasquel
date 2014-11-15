@@ -9,7 +9,6 @@ tasquel
 [http://tasquel.herokuapp.com/](http://tasquel.herokuapp.com/)
 
 # 開発メンバー
-- Yasuaki Watanabe
 - Yoshiki Eguchi
 - Yasuko Soeno
 - Shota Kojihara
