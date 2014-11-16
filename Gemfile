@@ -38,9 +38,10 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-#gem 'omniauth'
-#gem 'omniauth-twitter'
 gem 'twitter', '~> 5.13.0'
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'settingslogic'
 
 gem 'i18n'
 gem 'rails_12factor', group: :production

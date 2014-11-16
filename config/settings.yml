@@ -1,0 +1,15 @@
+defaults: &defaults
+  twitter:
+    consumer_key: <%= ENV["TW_APPID"] %>
+    consumer_secret: <%= ENV["TW_SECRET"] %>
+    #access_token_key: <%=  ENV["TW_ATOKEN"] %>
+    #access_token_secret: <%= ENV["TW_ASECRET"] %>
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
