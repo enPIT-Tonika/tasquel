@@ -1,0 +1,7 @@
+<div id="container">
+ようこそ<%= current_user.name %>さん
+ <%= link_to 'ログアウト', logout_path,  {class:  "btn btn-warning active  btn-sm"} %>
+<br><br>
+現在の通知設定：<%= @notify_status %><br>
+<%= link_to @link_msg,  home_toggle_notify_path,  {class:  "btn btn-primary active  btn-sm"}  %>
+</div>

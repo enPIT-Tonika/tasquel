@@ -1,12 +1,7 @@
 require 'twitter'
 
 namespace :send_msg do
-  desc "アカウントtasquelを使って、メッセージを自動ツイート"
-  task :hage, ['hige', 'hege'] => :environment do |task, args|
-    puts args.hige
-    puts args.hege
-  end
-  
+  desc "アカウントtasquelを使って、メッセージを自動ツイート"  
   task :first_notification,['info'] => :environment  do |task, args|
      #Twitter設定：環境変数から値を読み込む
     tw_client = Twitter::REST::Client.new do |config|
@@ -17,13 +12,14 @@ namespace :send_msg do
     end
     
     #発言
-    dest_account = "YoshikiEguchi" 
-    begin
-      tw_client.update("@#{dest_account}  #{args.info}です。薬飲みましたか？")
-    rescue => e
-      Rails.logger.error "<<twitter.rake::tweet.update ERROR : #{e.message}>>"
+    dest_accounts = User.where(notify: true)
+    dest_accounts.each do |dest_account| 
+      begin
+        tw_client.update("@#{dest_account.name}  #{args.info}です。薬飲みましたか？")
+      rescue => e
+        Rails.logger.error "<<twitter.rake::tweet.update ERROR : #{e.message}>>"
+      end
     end
-   
   end
   
 end

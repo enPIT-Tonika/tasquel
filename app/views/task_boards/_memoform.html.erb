@@ -1,7 +1,0 @@
-<%= form_for @memo do |m| %>
-	<%= m.text_area :taskmemo, size: "45x1" %>
-    <% if @memo.errors.any? %>
-        <%= @memo.errors.message[:taskmemo][0] %>
-    <% end %>
-    <%= m.submit '更新'%>
-<% end %>
