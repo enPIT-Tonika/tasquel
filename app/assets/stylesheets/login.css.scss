@@ -1,0 +1,43 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+body{
+      background:no-repeat center center fixed;
+    background-image:image-url('login_bg.jpg');
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+#inputArea{
+    position:relative;
+    margin:20% auto;
+    width:50%;
+    height:60%;
+    
+    #login_logo{
+      position:absolute;
+      width:100px;
+      height:100px;
+      top:-50px;
+      left:-80px;
+      z-index:0;
+    }
+    #data_inputArea{
+      position:relative;
+      z-index:1;
+      width:100%;
+      height:100%;
+      padding:50px;
+      background:no-repeat center center fixed;
+      background-image:image-url('login_input.png');
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+
+      border-radius: 10px;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+    }  
+}
