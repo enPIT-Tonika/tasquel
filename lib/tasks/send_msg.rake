@@ -12,10 +12,18 @@ namespace :send_msg do
     end
     
     #発言
+    r = Random.new_seed % 2 #乱数で0か1かを得る
     dest_accounts = User.where(notify: true)
+    comment = ""
+    if r == 0
+      comment = "だよ！薬飲んだ？ by カプ君"
+    else
+      comment = "だぞ！薬飲まないとやばいぞ！ by タブ君"
+    end
+    
     dest_accounts.each do |dest_account| 
       begin
-        tw_client.update("@#{dest_account.name}  #{args.info}です。薬飲みましたか？")
+        tw_client.update("@#{dest_account.screen_name}  #{args.info}#{comment}")
       rescue => e
         Rails.logger.error "<<twitter.rake::tweet.update ERROR : #{e.message}>>"
       end
