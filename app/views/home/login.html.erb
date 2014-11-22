@@ -1,14 +1,13 @@
-<div id="container">
-	<div class="row">
-		<div id="inputArea">
-			<%= image_tag 'login_logo.png', alt:'bg', id:'login_logo' %>
-			<div id="data_inputArea">
-		      <h1 class="text-center">TasQuel</h1>
-		      <p class="text-center">Twitterアカウントでログイン</p>
-		      <p class="text-center">
-		       <%= link_to 'Log in', '/auth/twitter', {class:  "btn btn-primary btn-lg active"}%>
-		      </p>
-		    </div>
-		</div>
+<div id="containerBox">
+	<div class="container">
+	  <div id="inputArea">
+		<%= image_tag 'login_logo.png', alt:'bg', id:'login_logo' %>
+	  <div id="data_inputArea">
+	    <h1 class="text-center">TasQuel</h1><br/>
+	    <p class="text-center">Twitterアカウントでログイン</p><br/>
+	    <p class="text-center">
+	      <%= link_to 'Log in', '/auth/twitter', {class:  "btn btn-primary btn-lg active"}%>
+	    </p>
+	  </div>
 	</div>
 </div>
