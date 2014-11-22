@@ -1,7 +1,39 @@
-<div id="container">
-ようこそ<%= current_user.name %>さん
- <%= link_to 'ログアウト', logout_path,  {class:  "btn btn-warning active  btn-sm"} %>
-<br><br>
-現在の通知設定：<%= @notify_status %><br>
-<%= link_to @link_msg,  home_toggle_notify_path,  {class:  "btn btn-primary active  btn-sm"}  %>
+   <div class="container">
+      <div class="masthead">
+      	<div class="nav nav-pills pull-right">
+          	<%= link_to 'ログアウト', logout_path,  {class:  "btn btn-warning active btn-sm"} %>
+        </div>
+         <h3 class="muted">ようこそ<%= current_user.name %>さん</h3>
+      </div>
+
+      <!-- setting -->
+      <div class="jumbotron">
+        <h3>通知の設定：<%= @notify_status %><%= link_to @link_msg,  home_toggle_notify_path,  {class:  "btn btn-primary active  btn-sm pull-right"}  %></h3>
+        <br/>
+ 
+        <h3>登録</h3>
+        <table class="table">
+        　<thead>
+        　　<tr>
+        　　　<th>#</th>
+        　　　<th>タイミング</th>
+        　　　<th>時間</th>
+        　　　<th>編集</th>
+        　　</tr>
+        　<tbody>
+        	<tr>
+	     	　<td></td>
+	     	　<td>昼</td>
+	     	　<td>３：００</td>
+	     	　<td></td>
+         　</tr>
+         </tbody>
+        </table>
+      </div>
+
+      <!-- Site footer -->
+      <footer class="footer">
+        <p>&copy; Company 2014</p>
+      </footer>
+    </div> <!-- /container -->
 </div>
