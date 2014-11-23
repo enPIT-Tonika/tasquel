@@ -33,7 +33,7 @@ namespace :send_msg do
             },
             {
               desc: "夕食後",
-              time: "22:05"
+              time: "20:00"
             }
           ]
           else
