@@ -1,7 +1,66 @@
-<div id="container">
-ようこそ<%= current_user.name %>さん
- <%= link_to 'ログアウト', logout_path,  {class:  "btn btn-warning active  btn-sm"} %>
-<br><br>
-現在の通知設定：<%= @notify_status %><br>
-<%= link_to @link_msg,  home_toggle_notify_path,  {class:  "btn btn-primary active  btn-sm"}  %>
+   <div class="container">
+      <div class="masthead">
+      	<div class="nav nav-pills pull-right">
+          	<%= link_to 'ログアウト', logout_path,  {class:  "btn btn-warning active btn-sm"} %>
+        </div>
+         <h3 class="muted">ようこそ<%= current_user.name %>さん</h3>
+      </div>
+
+      <!-- setting -->
+      <div class="jumbotron">
+        <h3>通知の設定：<%= @notify_status %><%= link_to @link_msg,  home_toggle_notify_path,  {class:  "btn btn-primary active  btn-sm pull-right"}  %></h3>
+        <br/>
+        <h3>登録</h3>
+ 
+　　　　　<table class="table">
+        　<thead>
+        　　<tr>
+        　　　<th>#</th>
+        　　　<th>タイミング</th>
+        　　　<th>時間</th>
+        　　　<th>編集</th>
+        　　</tr>
+     
+<!-- DBデータの表示エリア   -->
+        　<tbody>
+        	<!-- DBからのデータを繰り返し表示させる列です。 -->
+        	<tr>
+	     	　<td></td>
+	     	　<td>昼</td>
+	     	　<td>３：００</td>
+	     	　<td>
+	     		<button type="button" class="btn btn-default btn-lg">
+				  <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> 削除
+				</button>
+			　</td>
+         　 </tr>
+         
+            <!-- 登録用のフォームの列です。 -->
+            <tr >
+            <form class="form-inline" role="form">
+	     	　<td>
+	     	</td>
+	     	　<td>
+		      <input type="text" class="form-control" id="exampleInputEmail2" placeholder="例）昼">
+	     	　</td>
+	     	　<td>
+	     		<input type="time" class="form-control" id="exampleInputEmail2" placeholder="例）15:00">
+	     	　</td>
+	     	　<td>
+	     		<button type="button" class="btn btn-default btn-lg">
+				  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 追加
+				</button>
+	     	　</td>
+         　 </form>
+         　　</tr>
+         </tbody>
+       </table>
+      </div>
+<!-- DBからの表示の終了 --> 
+
+      <!-- Site footer -->
+      <footer class="footer">
+        <p>&copy; Company 2014</p>
+      </footer>
+    </div> <!-- /container -->
 </div>
