@@ -34,30 +34,27 @@
 				</button>
 			　</td>
          　 </tr>
-         
+
             <!-- 登録用のフォームの列です。 -->
             <tr >
-            <form class="form-inline" role="form">
+            <form class="form-inline" role="form"><%= form_tag("/setting", method: "get") do %>
 	     	　<td>
 	     	</td>
 	     	　<td>
-		      <input type="text" class="form-control" id="exampleInputEmail2" placeholder="例）昼">
+	     		<%= text_field_tag 'actName', @actName, placeholder: "例）昼", class: "exampleInputEmail2 form-control" %>
 	     	　</td>
 	     	　<td>
-	     		<input type="time" class="form-control" id="exampleInputEmail2" placeholder="例）15:00">
+	     		<%= text_field_tag 'actTime', @actTime, placeholder: "例）15:00", class: "exampleInputEmail2 form-control" %>
 	     	　</td>
 	     	　<td>
-	     		<button type="button" class="btn btn-default btn-lg">
-				  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 追加
-				</button>
+	     	    <%= submit_tag '➕ 追加' , class:"btn btn-default btn-lg" %>
 	     	　</td>
-         　 </form>
+         　 <% end %></form>
          　　</tr>
          </tbody>
        </table>
       </div>
 <!-- DBからの表示の終了 --> 
-
       <!-- Site footer -->
       <footer class="footer">
         <p>&copy; Company 2014</p>
