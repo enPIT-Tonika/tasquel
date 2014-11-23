@@ -21,26 +21,38 @@ namespace :send_msg do
       comment = "だぞ！薬飲まないとやばいぞ！ by タブ君"
     end
     
-    dest_accounts.each do |dest_account| 
+    t = Time.now #現在時刻の取得
+    dest_accounts.each do |dest_account|
       begin
-      #時間の情報を取り出す
-      json_time = dest_account.json_time
-      #通知する時間かを確認する
-      json_time.each do |j|
-        #今の時間を確認する
-        t = Time.now
-        i = Time.parse(j["time"])
-        if i == t
-          tw_client.update("@#{dest_account.screen_name}  #{args.info}#{comment}")  
-          break
+        #json_timeが空の場合は朝８時、夜８時につぶやくようデータをセット
+        if dest_account_json_time.blank?
+          json_time = [
+            {
+              desc: "朝食後",
+              time: "8:00"
+            },
+            {
+              desc: "夕食後",
+              time: "22:05"
+            }
+          ]
+          else
+            json_time = dest_account.json_time
+          end
+          #通知する時間かを確認する
+          json_time.each do |j|
+            i = Time.parse(j["time"])
+            if t+300 >= i || i >= t-300
+              tw_client.update("@#{dest_account.screen_name} #{args.info}#{comment}")
+              break
+            end
+          end
+        rescue => e
+          Rails.logger.error"<<twitter.rake::tweet.update ERROR : #{e.message}>>"
         end
       end
-      #通知する時間なら
-        
-      rescue => e
-        Rails.logger.error "<<twitter.rake::tweet.update ERROR : #{e.message}>>"
-      end
     end
-  end
-  
 end
+
+    
+    
