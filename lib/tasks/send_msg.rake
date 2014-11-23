@@ -25,7 +25,7 @@ namespace :send_msg do
     dest_accounts.each do |dest_account|
       begin
         #json_timeが空の場合は朝８時、夜８時につぶやくようデータをセット
-        if dest_account_json_time.blank?
+        if dest_account.json_time.blank?
           json_time = [
             {
               desc: "朝食後",
