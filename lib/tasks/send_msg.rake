@@ -23,7 +23,20 @@ namespace :send_msg do
     
     dest_accounts.each do |dest_account| 
       begin
-        tw_client.update("@#{dest_account.screen_name}  #{args.info}#{comment}")
+      #時間の情報を取り出す
+      json_time = dest_account.json_time
+      #通知する時間かを確認する
+      json_time.each do |j|
+        #今の時間を確認する
+        t = Time.now
+        i = Time.parse(j["time"])
+        if i == t
+          tw_client.update("@#{dest_account.screen_name}  #{args.info}#{comment}")  
+          break
+        end
+      end
+      #通知する時間なら
+        
       rescue => e
         Rails.logger.error "<<twitter.rake::tweet.update ERROR : #{e.message}>>"
       end
