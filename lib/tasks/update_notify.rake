@@ -1,8 +1,7 @@
 namespace :update_notify do
   desc "テスト用アカウントの通知時間として、現在時刻をセット"  
   task :setTestAccounts => :environment  do |task|
-    t = Time.now.strftime("%H:%M") #現在の時刻情報を取得
-    
+    jst = 60*60*9
     profiles = [
       {
         provider: "twitter",
@@ -12,7 +11,7 @@ namespace :update_notify do
         notify: true,
         json_time: [ { 
           desc: "テストその1", 
-          time: Time.now.strftime("%H:%M") 
+          time: (Time.now + jst).strftime("%H:%M") 
         } ]
       },
       {
@@ -23,7 +22,7 @@ namespace :update_notify do
         notify: true,
         json_time: [ { 
           desc: "テストその2", 
-          time: (Time.now-60).strftime("%H:%M") 
+          time: (Time.now - 60 + jst).strftime("%H:%M") 
         } ]
       },
       {
@@ -34,7 +33,7 @@ namespace :update_notify do
         notify: true,
         json_time: [ { 
           desc: "テストその3", 
-          time: (Time.now-400).strftime("%H:%M") 
+          time: (Time.now - 400 + jst).strftime("%H:%M") 
         } ]
       }, 
      {
@@ -45,7 +44,7 @@ namespace :update_notify do
         notify: true,
         json_time: [ { 
           desc: "テストその4", 
-          time: (Time.now+400).strftime("%H:%M") 
+          time: (Time.now + 400 + jst).strftime("%H:%M") 
         } ]
       }             
     ]
