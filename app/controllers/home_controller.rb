@@ -7,15 +7,15 @@ class HomeController < BaseController
       if @current_user.notify == true
           @notify_status = "ON"
           @link_msg = "OFFにする"
+          #時刻情報の取得
+          @time_info = []
+          unless @current_user.json_time.blank?
+            @time_info = @current_user.json_time
+          end
       else
           @notify_status = "OFF"
           @link_msg = "ONにする"
        end
-    end
-    #時刻情報の取得
-    @time_info = []
-    unless @current_user.json_time.blank?
-      @time_info = @current_user.json_time
     end
   end
   
