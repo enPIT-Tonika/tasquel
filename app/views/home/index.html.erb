@@ -10,7 +10,7 @@
       <div class="jumbotron">
         <h3>通知の設定：<%= @notify_status %><%= link_to @link_msg,  home_toggle_notify_path,  {class:  "btn btn-primary active  btn-sm pull-right"}  %></h3>
         <br/>
-        <h3>登録</h3>
+        <h3>薬を飲む時間の登録</h3>
  
 　　　　　<table class="table">
         　<thead>
@@ -53,8 +53,24 @@
          　　</tr>
          </tbody>
        </table>
-      </div>
-<!-- DBからの表示の終了 --> 
+       <!-- DBからの表示の終了 --> 
+       <br/>
+       
+       <h3 class="pull-left">薬を取りに行くまでの日数</h3>
+　　　　 <table class="table">
+         <tr><%= form_tag("/modify_medicine_num", method: "get", class:"form-inline") do %>
+	     　<td></td>
+	     　<td>残り日数</td>
+	     　<td>
+	     	<%= text_field_tag 'mediine_num', @modify_status, placeholder: @modify_medicine_num, class: "exampleInputEmail2 form-control" %>
+           </td>
+	     　<td>
+	     	<%= submit_tag '設定' , class:"btn btn-default btn-lg" %>
+		 　</td>
+         <% end %></tr>
+      </table>
+　    </div>
+       
       <!-- Site footer -->
       <footer class="footer">
         <p>&copy; Company 2014</p>

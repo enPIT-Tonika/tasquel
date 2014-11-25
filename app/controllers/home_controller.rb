@@ -27,4 +27,12 @@ class HomeController < BaseController
     end
     redirect_to home_index_path
   end
+  
+  #日時の登録を確認
+  def modify_medicine_num
+    #薬の残りの日数の登録
+    login_required #要ログインの項目
+    
+    # ここから取得、登録する箇所がまだです。
+  end
 end
