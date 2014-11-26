@@ -24,32 +24,35 @@
 <!-- DBデータの表示エリア   -->
         　<tbody>
         	<!-- DBからのデータを繰り返し表示させる列です。 -->
+        	<% @time_info.each_with_index do |t, idx| %>
         	<tr>
 	     	　<td></td>
-	     	　<td>昼</td>
-	     	　<td>３：００</td>
+	     	　<td><%= t["desc"] %></td>
+	     	　<td><%= t["time"] %></td>
 	     	　<td>
-	     		<button type="button" class="btn btn-default btn-lg">
-				  <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> 削除
-				</button>
+	     		<a href="/del_notify/<%= idx %>" class="btn btn-default btn-lg">
+				  <span class="glyphicon glyphicon-trash"></span> 削除
+				</a>
 			　</td>
-         　 </tr>
+		</tr>
+         <% end %>
 
             <!-- 登録用のフォームの列です。 -->
             <tr >
-            <form class="form-inline" role="form"><%= form_tag("/setting", method: "get") do %>
+           <%= form_tag("/add_notify", method: "get", class: "form-inline") do %>
 	     	　<td>
 	     	</td>
 	     	　<td>
-	     		<%= text_field_tag 'actName', @actName, placeholder: "例）昼", class: "exampleInputEmail2 form-control" %>
+	     		<%= text_field_tag 'desc', @desc, placeholder: "例）昼", class: "exampleInputEmail2 form-control" %>
 	     	　</td>
 	     	　<td>
-	     		<%= text_field_tag 'actTime', @actTime, placeholder: "例）15:00", class: "exampleInputEmail2 form-control" %>
+	     		<%= text_field_tag 'time', @time, placeholder: "例）15:00", class: "exampleInputEmail2 form-control" %>
 	     	　</td>
 	     	　<td>
-	     	    <%= submit_tag '➕ 追加' , class:"btn btn-default btn-lg" %>
+	     	    <!--<%= submit_tag '+ 追加' , class:"btn btn-default btn-lg" %>-->
+	     	    <input class="btn btn-default btn-lg" name="commit" type="submit" value="+ 追加" />
 	     	　</td>
-         　 <% end %></form>
+         　 <% end %>
          　　</tr>
          </tbody>
        </table>

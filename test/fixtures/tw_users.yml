@@ -1,0 +1,45 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+current_time:
+  provider: "twitter",
+  uid: 0000000001,
+  screen_name: "test1",
+  name: "test1",
+  notify: true,
+  json_time: [ { 
+    desc: "tweetテストその1", 
+    time: <%= (Time.now).strftime("%H:%M") %> 
+  } ]
+
+time_past_60:
+  provider: "twitter",
+  uid: 0000000002,
+  screen_name: "test2",
+  name: "test2",
+  notify: true,
+  json_time: [ { 
+    desc: "tweetテストその2",
+    time: <%= (Time.now-60).strftime("%H:%M") %>  
+  } ]
+
+time_past_400:
+  provider: "twitter",
+  uid: 0000000003,
+  screen_name: "test3",
+  name: "test3",
+  notify: true,
+  json_time: [ { 
+    desc: "tweetテストその3",
+    time: <%= (Time.now-400).strftime("%H:%M") %>  
+  } ]
+
+time_ahead_400:
+  provider: "twitter4",
+  uid: 0000000004,
+  screen_name: "test4",
+  name: "test4",
+  notify: true,
+  json_time: [ { 
+    desc: "tweetテストその4",
+    time: <%= (Time.now+400).strftime("%H:%M") %>  
+  } ]

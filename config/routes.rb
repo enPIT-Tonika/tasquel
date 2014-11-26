@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   get "home/index"
   get "home/login", :to=> 'home#login'
   get "home/toggle_notify", :to=> 'home#toggle_notify'
+  get "del_notify/:idx", :to=> 'home#del_notify'
+  get "add_notify", :to=> 'home#add_notify'
   get '/auth/:provider/callback', :to => 'sessions#callback'
   post '/auth/:provider/callback', :to => 'sessions#callback'
   get '/logout' => 'sessions#destroy', :as => :logout

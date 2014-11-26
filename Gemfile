@@ -50,3 +50,6 @@ ruby '2.1.2'
 group :test do
   gem "shoulda"
 end
+
+#gem "rspec-rails"
+#gem 'rake_shared_context'
