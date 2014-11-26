@@ -57,5 +57,51 @@ namespace :send_msg do
     end
 end
 
+desc "薬が少なくなると通知する。（@tasquelからツイート)"
+task :go_to_hospital => :environment do |task|
+    tw_client = Twitter::REST::Client.new do |config|
+      config.consumer_key = ENV["TW_APPID"]
+      config.consumer_secret = ENV["TW_SECRET"]
+      config.access_token = ENV["TW_ATOKEN"]
+      config.access_token_secret = ENV["TW_ASECRET"]
+    end
+    
+    dest_accounts = User.where(notify: true) 
+    dest_accounts.each do |dest_account|
+      begin
+        next if dest_account.medicine_num.blank?
+        #日数を確認する。
+        medicine_num.each do |num|
+          if num >= 7
+            p "tyring to tweet for #{dest_account.screen_name}"
+            meg = create_msg(dest_account.screen_name,num["desc"])
+            tw_client.update(msg)
+            break
+          end
+        end
+      rescue => e
+          Rails.logger.error"<<twitter.rake::tweet.update ERROR : #{e.message}>>"
+      end
+     end
+    end
+    
+    #tweetの作成
+    def create_msg(account, desc)
+      if desc == nil
+        desc = "薬がなくなるよ！"
+      else
+        desc += "日で薬がなくなるよ！"
+      end
+      
+      r = Random.new_seed % 2 #乱数で0か1かを得る
+      comment = "@#{account} #{desc}"
+      if r == 0
+        comment += "病院にもらいに行ってね！ by カプ君"
+      else
+        comment += "病院にもらいに行けよ！ by タブ君"
+      end     
+      return comment      
+    end
+end
     
     
