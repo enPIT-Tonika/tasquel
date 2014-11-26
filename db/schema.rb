@@ -11,14 +11,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20141125123346) do
-=======
-ActiveRecord::Schema.define(version: 20141123140514) do
->>>>>>> 5ea6c69099a5228edd1956d8d134203cce4c2f18
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "books", force: true do |t|
+    t.string   "title"
+    t.string   "auhor"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "families", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "memos", force: true do |t|
+    t.text     "taskmemo"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "task_boards", force: true do |t|
+    t.text     "taskText"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "family_id"
+    t.time     "tasktime"
+  end
+
+  add_index "task_boards", ["family_id"], name: "index_task_boards_on_family_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "provider"
@@ -27,13 +52,9 @@ ActiveRecord::Schema.define(version: 20141123140514) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-<<<<<<< HEAD
     t.boolean  "notify",       default: false
     t.integer  "medicine_num"
-=======
-    t.boolean  "notify",      default: false
     t.json     "json_time"
->>>>>>> 5ea6c69099a5228edd1956d8d134203cce4c2f18
   end
 
 end

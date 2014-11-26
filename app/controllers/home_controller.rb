@@ -34,16 +34,16 @@ class HomeController < BaseController
     redirect_to home_index_path
   end
   
-<<<<<<< HEAD
-  #日時の登録を確認
+    #日時の登録を確認
   def modify_medicine_num
     #薬の残りの日数の登録
     login_required #要ログインの項目
     
+    @modify_num = params[:medicine_num]
+    
     # ここから取得、登録する箇所がまだです。
   end
-end
-=======
+
   def del_notify
     #指定された通知エントリを削除
     login_required
@@ -75,4 +75,3 @@ end
    redirect_to home_index_path   
   end
 end
->>>>>>> 5ea6c69099a5228edd1956d8d134203cce4c2f18
