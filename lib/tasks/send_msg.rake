@@ -11,9 +11,10 @@ namespace :send_msg do
       config.access_token_secret = ENV["TW_ASECRET"]
     end
    
-    jst = (60 * 60 * 24) - (60*60*9) #UTCからの日本時間のoffset
+    jst = (60 * 60 * 9) #UTCからの日本時間のoffset
     dest_accounts = User.where(notify: true) 
     t = Time.now #現在時刻の取得
+    tt = t.hour * 60 + t.min #0時からの経過分数を取り出し 
     dest_accounts.each do |dest_account|
       begin
         next if dest_account.json_time.blank?
@@ -21,13 +22,13 @@ namespace :send_msg do
         json_time = dest_account.json_time
         #通知する時間かを確認する
         json_time.each do |j|
-          i = Time.parse(j["time"]) + jst
-          p i
-          p t
-          if t+300 >= i && i >= t-300
-            p "tyring to tweet..."
+          i = Time.parse(j["time"]) - jst
+          j = i.hour * 60 + i.min #0時からの経過分数を取り出し 
+          p j
+          p tt
+          if tt + 3 >= j && j >= tt - 3
+            p "tyring to tweet for #{dest_account.screen_name}"
             msg = create_msg(dest_account.screen_name, j["desc"])
-            p msg
             tw_client.update(msg)
             break
           end
