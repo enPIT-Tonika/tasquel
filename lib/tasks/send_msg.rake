@@ -78,7 +78,9 @@ namespace :send_msg do
     end
     rescue => e
       Rails.logger.error"<<twitter.rake::tweet.update ERROR : #{e.message}>>"
+      end
     end
+    
         
     
     #tweetの作成
