@@ -36,8 +36,8 @@ namespace :send_msg do
       rescue => e
           Rails.logger.error"<<twitter.rake::tweet.update ERROR : #{e.message}>>"
       end
-     end
     end
+  end
     
     #発言をランダムに作成
     def create_msg(account, desc)
@@ -55,6 +55,8 @@ namespace :send_msg do
       end     
       return comment      
     end
+  end
+    
 
   num "薬が少なくなると通知する。（@tasquelからツイート)"
   task :go_to_hospital => :environment do |task|
