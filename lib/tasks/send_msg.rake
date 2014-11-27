@@ -77,7 +77,9 @@ task :go_to_hospital => :environment do |task|
     end
     rescue => e
       Rails.logger.error"<<twitter.rake::tweet.update ERROR : #{e.message}>>"
-    end    
+    end
+  end
+        
     
     #tweetの作成
     def create_msg(account, n)
@@ -90,7 +92,6 @@ task :go_to_hospital => :environment do |task|
         comment += "病院にもらいに行けよ！ by タブ君"
       end     
       return comment      
-    end
     end
 end
     
