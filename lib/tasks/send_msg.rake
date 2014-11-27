@@ -55,10 +55,9 @@ namespace :send_msg do
       end     
       return comment      
     end
-end
 
-desc "薬が少なくなると通知する。（@tasquelからツイート)"
-task :go_to_hospital => :environment do |task|
+  num "薬が少なくなると通知する。（@tasquelからツイート)"
+  task :go_to_hospital => :environment do |task|
     tw_client = Twitter::REST::Client.new do |config|
       config.consumer_key = ENV["TW_APPID"]
       config.consumer_secret = ENV["TW_SECRET"]
@@ -92,6 +91,7 @@ task :go_to_hospital => :environment do |task|
       end     
       return comment      
     end
+  end
 end
     
     
