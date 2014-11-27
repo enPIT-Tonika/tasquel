@@ -25,7 +25,7 @@ namespace :send_msg do
         json_time.each do |j|
           i = Time.parse(j["time"]) - jst
           n = i.hour * 60 + i.min #0時からの経過分数を取り出し 
-          p "current_time: #{j}"
+          p "current_time: #{n}"
           p "projected time: #{tt}"
           if (tt + 5) >= n && n >= (tt - 5)
             p "tyring to tweet for #{dest_account.screen_name}"
