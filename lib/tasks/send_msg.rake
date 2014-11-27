@@ -16,6 +16,7 @@ namespace :send_msg do
     t = Time.now #現在時刻の取得
     tt = t.hour * 60 + t.min #0時からの経過分数を取り出し 
     dest_accounts.each do |dest_account|
+      p "#{dest_account.screen_name} :"
       begin
         next if dest_account.json_time.blank?
  
@@ -24,9 +25,9 @@ namespace :send_msg do
         json_time.each do |j|
           i = Time.parse(j["time"]) - jst
           j = i.hour * 60 + i.min #0時からの経過分数を取り出し 
-          p j
-          p tt
-          if tt + 3 >= j && j >= tt - 3
+          p "current_time: #{j}"
+          p "projected time: #{tt}"
+          if (tt + 5) >= j && j >= (tt - 5)
             p "tyring to tweet for #{dest_account.screen_name}"
             msg = create_msg(dest_account.screen_name, j["desc"])
             tw_client.update(msg)
