@@ -66,35 +66,24 @@ task :go_to_hospital => :environment do |task|
       config.access_token_secret = ENV["TW_ASECRET"]
     end
     
-    dest_accounts = User.where(notify: true) 
-    dest_accounts.each do |dest_account|
-      begin
-        next if dest_account.medicine_num.blank?
-        #日数を確認する。
-        medicine_num.each do |num|
-          if num >= 7
-            p "tyring to tweet for #{dest_account.screen_name}"
-            meg = create_msg(dest_account.screen_name,num["desc"])
-            tw_client.update(msg)
-            break
-          end
-        end
-      rescue => e
-          Rails.logger.error"<<twitter.rake::tweet.update ERROR : #{e.message}>>"
+    num = dest_account.medicine_num
+    if num.blank?
+      if num >= 7 #日数を確認する。
+        p "tyring to tweet for #{dest_account.screen_name}"
+        msg = create_msg(dest_account.screen_name,num["n"])
+        tw_client.update(msg)
+        break
       end
-     end
+    end
+    rescue => e
+      Rails.logger.error"<<twitter.rake::tweet.update ERROR : #{e.message}>>"
     end
     
     #tweetの作成
-    def create_msg(account, desc)
-      if desc == nil
-        desc = "薬がなくなるよ！"
-      else
-        desc += "日で薬がなくなるよ！"
-      end
-      
+    def create_msg(account, n)
+      n = "#{num}日で薬がなくなるよ！"
       r = Random.new_seed % 2 #乱数で0か1かを得る
-      comment = "@#{account} #{desc}"
+      comment = "@#{account} #{n}"
       if r == 0
         comment += "病院にもらいに行ってね！ by カプ君"
       else
