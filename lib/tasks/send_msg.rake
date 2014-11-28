@@ -53,9 +53,8 @@ namespace :send_msg do
       else
         comment += "だぞ！薬の時間だ！飲まないとやばいぞ！ by タブ君"
       end     
-      return comment      
-    end   
-  end
+      return comment        
+    end
   
     
   num "薬が少なくなると通知する。（@tasquelからツイート)"
