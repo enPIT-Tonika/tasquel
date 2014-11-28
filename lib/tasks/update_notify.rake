@@ -12,7 +12,8 @@ namespace :update_notify do
         json_time: [ { 
           desc: "テストその1", 
           time: (Time.now + jst).strftime("%H:%M") 
-        } ]
+        } ],
+       medicine_num: 8
       },
       {
         provider: "twitter",
@@ -23,7 +24,8 @@ namespace :update_notify do
         json_time: [ { 
           desc: "テストその2", 
           time: (Time.now - 60 + jst).strftime("%H:%M") 
-        } ]
+        } ],
+        medicine_num: 0
       },
       {
         provider: "twitter",
@@ -34,7 +36,8 @@ namespace :update_notify do
         json_time: [ { 
           desc: "テストその3", 
           time: (Time.now - 400 + jst).strftime("%H:%M") 
-        } ]
+        } ],
+        medicine_num: 1
       }, 
      {
         provider: "twitter",
@@ -45,8 +48,21 @@ namespace :update_notify do
         json_time: [ { 
           desc: "テストその4", 
           time: (Time.now + 400 + jst).strftime("%H:%M") 
-        } ]
-      }             
+        } ],
+        medicine_num: 20
+      } ,
+     {
+        provider: "twitter",
+        uid: 0000000005,
+        screen_name: "test5",
+        name: "test5",
+        notify: false,
+        json_time: [ { 
+          desc: "テストその5", 
+          time: (Time.now + jst).strftime("%H:%M") 
+        } ],
+        medicine_num: 3
+      } ,                  
     ]
     
     profiles.each do |profile|
