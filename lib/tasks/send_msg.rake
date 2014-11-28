@@ -54,12 +54,10 @@ namespace :send_msg do
         comment += "だぞ！薬の時間だ！飲まないとやばいぞ！ by タブ君"
       end     
       return comment      
-    end
+    end   
   end
-end
   
     
-namespace :send_msg do
   num "薬が少なくなると通知する。（@tasquelからツイート)"
   task :go_to_hospital => :environment do |task|
     tw_client = Twitter::REST::Client.new do |config|
@@ -80,7 +78,7 @@ namespace :send_msg do
     end
     rescue => e
       Rails.logger.error"<<twitter.rake::tweet.update ERROR : #{e.message}>>"
-    end
+    end   
   end
  
         
@@ -97,7 +95,5 @@ namespace :send_msg do
       end     
       return comment
     end
-  end
 end
-    
     
