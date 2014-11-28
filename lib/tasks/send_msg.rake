@@ -80,7 +80,7 @@ namespace :send_msg do
       Rails.logger.error"<<twitter.rake::tweet.update ERROR : #{e.message}>>"
       end
     end
-    
+  end  
         
     
     #tweetの作成
