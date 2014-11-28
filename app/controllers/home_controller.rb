@@ -2,20 +2,23 @@ class HomeController < BaseController
   def index
     login_required
     
-    #通知ステータスの情報
     unless @current_user.blank?
+      #時刻情報の取得
+      @time_info = []
+      unless @current_user.json_time.blank?
+        @time_info = @current_user.json_time
+      end
+      #通知ステータスの情報
       if @current_user.notify == true
           @notify_status = "ON"
           @link_msg = "OFFにする"
-          #時刻情報の取得
-          @time_info = []
-          unless @current_user.json_time.blank?
-            @time_info = @current_user.json_time
-          end
       else
           @notify_status = "OFF"
           @link_msg = "ONにする"
-       end
+      end
+      #薬の残り日数の取得
+      @medicine_num = 30 #デフォルト値
+      @medicine_num = @current_user.medicine_num unless @current_user.medicine_num.blank?
     end
   end
   
@@ -34,6 +37,22 @@ class HomeController < BaseController
     redirect_to home_index_path
   end
   
+    #日時の登録を確認
+  def modify_medicine_num
+    #薬の残りの日数の登録
+    login_required #要ログインの項目    
+    modify_num = params[:medicine_num]
+    p modify_num
+    #値の更新
+    if @current_user.update({medicine_num: modify_num})
+      flash[:notice] = "薬の残り日数を更新しました。"
+    else
+      flash[:alert] = "薬の残り日数を更新できませんでした。"
+    end
+    redirect_to home_index_path
+    
+  end
+
   def del_notify
     #指定された通知エントリを削除
     login_required

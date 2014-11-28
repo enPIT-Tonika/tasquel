@@ -7,5 +7,4 @@ class User < ActiveRecord::Base
       user.name = auth['info']['name']
     end
   end
-
 end

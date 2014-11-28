@@ -35,9 +35,41 @@ namespace :send_msg do
           end
         end
       rescue => e
-          Rails.logger.error"<<twitter.rake::tweet.update ERROR : #{e.message}>>"
+        Rails.logger.error"<<rake send_msg:first_notification ERROR : #{e.message}>>"
       end
      end
+    end
+    
+
+    
+    desc "薬が少なくなると通知する。（@tasquelからツイート)"
+    task :go_to_hospital => :environment do |task|
+        p "executing rake send_msg:go_to_hospital"
+        tw_client = Twitter::REST::Client.new do |config|
+          config.consumer_key = ENV["TW_APPID"]
+          config.consumer_secret = ENV["TW_SECRET"]
+          config.access_token = ENV["TW_ATOKEN"]
+          config.access_token_secret = ENV["TW_ASECRET"]
+        end
+        
+        dest_accounts = User.all
+        dest_accounts.each do |dest_account|
+           p "#{dest_account.screen_name} :"
+           next if dest_account.medicine_num.blank?
+           num = dest_account.medicine_num
+           num -= 1 if num > 0 #残り日数を-1
+           begin
+             dest_account.update_attributes({medicine_num: num}) #日数をアップデート
+             next if dest_account.notify == false
+             if num < 8 #日数を確認
+              p "tyring to tweet for #{dest_account.screen_name}"
+              msg = create_go_hosp_msg(dest_account.screen_name,num)
+              tw_client.update(msg) 
+            end
+          rescue => e
+              Rails.logger.error"<<rake send_msg:go_to_hospital ERROR : #{e.message}>>"
+          end 
+        end 
     end
     
     #発言をランダムに作成
@@ -56,7 +88,21 @@ namespace :send_msg do
       end
       return comment      
     end
+    
+    #病院へ行くことを促す発言をランダムに作成
+    def create_go_hosp_msg(account, num)
+      r = Random.new_seed % 2 #乱数で0か1かを得る
+      comment = "@#{account} "
+      if num < 1
+        comment += "もう薬がない"
+      else
+        comment += "あと#{num}日で薬がなくなる"
+      end
+      if r == 0
+        comment += "よ！病院に行ってね！お薬手帳も忘れずに！ by カプ君"
+      else
+        comment += "ぞ！病院に行けよ！お薬手帳も持ってくんだぞ！ by タブ君"
+      end
+      return comment      
+    end
 end
-
-    
-    
