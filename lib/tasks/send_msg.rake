@@ -56,8 +56,10 @@ namespace :send_msg do
       return comment      
     end
   end
+end
+  
     
-
+namespace :send_msg do
   num "薬が少なくなると通知する。（@tasquelからツイート)"
   task :go_to_hospital => :environment do |task|
     tw_client = Twitter::REST::Client.new do |config|
