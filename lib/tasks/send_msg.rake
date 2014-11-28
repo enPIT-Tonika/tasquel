@@ -37,8 +37,8 @@ namespace :send_msg do
       rescue => e
           Rails.logger.error"<<twitter.rake::tweet.update ERROR : #{e.message}>>"
       end
-     end
     end
+  end
     
     #発言をランダムに作成
     def create_msg(account, desc)
@@ -55,8 +55,46 @@ namespace :send_msg do
         comment += "だぞ！薬の時間だ！飲まないとやばいぞ！ by タブ君"
       end
       return comment      
+    end   
+  end
+  
+    
+  num "薬が少なくなると通知する。（@tasquelからツイート)"
+  task :go_to_hospital => :environment do |task|
+    tw_client = Twitter::REST::Client.new do |config|
+      config.consumer_key = ENV["TW_APPID"]
+      config.consumer_secret = ENV["TW_SECRET"]
+      config.access_token = ENV["TW_ATOKEN"]
+      config.access_token_secret = ENV["TW_ASECRET"]
+    end
+    
+    num = dest_account.medicine_num
+    if num.blank?
+      if num >= 7 #日数を確認する。
+        p "tyring to tweet for #{dest_account.screen_name}"
+        msg = create_msg(dest_account.screen_name,num["n"])
+        tw_client.update(msg)
+        break
+      end
+    end
+    rescue => e
+      Rails.logger.error"<<twitter.rake::tweet.update ERROR : #{e.message}>>"
+    end   
+  end
+ 
+        
+    
+    #tweetの作成
+    def create_msg(account, n)
+      n = "#{num}日で薬がなくなるよ！"
+      r = Random.new_seed % 2 #乱数で0か1かを得る
+      comment = "@#{account} #{n}"
+      if r == 0
+        comment += "病院にもらいに行ってね！ by カプ君"
+      else
+        comment += "病院にもらいに行けよ！ by タブ君"
+      end     
+      return comment
     end
 end
-
-    
     
