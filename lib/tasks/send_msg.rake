@@ -78,9 +78,9 @@ namespace :send_msg do
     end
     rescue => e
       Rails.logger.error"<<twitter.rake::tweet.update ERROR : #{e.message}>>"
-      end
     end
-  end  
+  end
+ 
         
     
     #tweetの作成
@@ -93,7 +93,7 @@ namespace :send_msg do
       else
         comment += "病院にもらいに行けよ！ by タブ君"
       end     
-      return comment      
+      return comment
     end
   end
 end
