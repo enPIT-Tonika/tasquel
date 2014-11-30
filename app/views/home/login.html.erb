@@ -3,11 +3,22 @@
 	  <div id="inputArea">
 		<%= image_tag 'login_logo.png', alt:'bg', id:'login_logo' %>
 	  <div id="data_inputArea">
-	    <h1 class="text-center">TasQuel</h1><br/>
-	    <p class="text-center">Twitterアカウントでログイン</p><br/>
-	    <p class="text-center">
+	    <h1 class="text-center"><span class="tasu">＋</span>Quel</h1><br/>
+	    <p class="text-center"><span class="tasu">＋</span>Quelはお薬リマインダーアプリです。<br/>カプくんとタブくんの二人が<br/>あなたに薬の時間をおしらせします。</p><br/><br/>
+	    <p class="text-center">Twitterアカウントでログイン<br/><br/><br/>
 	      <%= link_to 'Log in', '/auth/twitter', {class:  "btn btn-primary btn-lg active"}%>
-	    </p>
+	    </p><br/>
 	  </div>
+	  <div class="row placeholders" id="caractors">
+	    	<div class="col-xs-3 col-sm-3 placeholder">
+	    	  <%= image_tag 'kapu.png', alt:'kapukun', class:'img-responsive' %>
+              <h4>カプくん</h4>
+            </div>
+            <div class="col-xs-6 col-sm-6"></div>
+            <div class="col-xs-3 col-sm-3 placeholder">
+              <%= image_tag 'tabu.png', alt:'tabukun', class:'img-responsive' %>
+              <h4>タプくん</h4>
+            </div>
+		</div>
 	</div>
 </div>

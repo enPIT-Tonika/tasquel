@@ -22,3 +22,7 @@ body{
   background-image: -ms-linear-gradient(bottom, #F9F37F 0%, #BDF83C 100%);
   background-image: linear-gradient(to bottom, #F9F37F 0%, #BDF83C 100%);
 }
+.tasu{
+	position:relative;
+	font-size:50%;
+}
