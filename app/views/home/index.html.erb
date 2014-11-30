@@ -23,6 +23,7 @@
         　　　<th>#</th>
         　　　<th>タイミング</th>
         　　　<th>時間</th>
+        　　　<th>種類</th>
         　　　<th>編集</th>
         　　</tr>
      
@@ -34,12 +35,13 @@
 	     	　<td></td>
 	     	　<td><%= t["desc"] %></td>
 	     	　<td><%= t["time"] %></td>
+	     	　<td><%= t["medicine_desc"] %></td>
 	     	　<td>
 	     		<a href="/del_notify/<%= idx %>" class="btn btn-default btn-lg">
 				  <span class="glyphicon glyphicon-trash"></span> 削除
 				</a>
 			　</td>
-		</tr>
+		　</tr>
          <% end %>
 
             <!-- 登録用のフォームの列です。 -->
@@ -52,6 +54,9 @@
 	     	　</td>
 	     	　<td>
 	     		<%= text_field_tag 'time', @time, placeholder: "例）15:00", class: "exampleInputEmail2 form-control" %>
+	     	　</td>
+	     	 <td>
+	     		<%= text_field_tag 'medicine_desc', @medicine_desc, placeholder: "例）錠剤", class: "exampleInputEmail2 form-control" %>
 	     	　</td>
 	     	　<td>
 	     	    <!--<%= submit_tag '+ 追加' , class:"btn btn-default btn-lg" %>-->
