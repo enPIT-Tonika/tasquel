@@ -11,7 +11,7 @@
       	<% if !flash[:notice].blank? %>
       		<div class="alert alert-success"><%= flash[:notice] %></div>
         <% elsif !flash[:alert].blank? %>
-        		<div class="alert alert-warning"><%= flash[:alert] %></div>
+        	<div class="alert alert-warning"><%= flash[:alert] %></div>
         	<% end %>
         <h3>通知の設定：<%= @notify_status %><%= link_to @link_msg,  home_toggle_notify_path,  {class:  "btn btn-primary active  btn-sm pull-right"}  %></h3>
         <br/>
@@ -70,13 +70,13 @@
        <br/>
        
        <h3 class="pull-left">薬を取りに行くまでの日数</h3>       
-　　<table class="table">
+　      　<table class="table">
 	        <%= form_tag("/modify_medicine_num", method: "get", class:"form-inline") do %>
          	<tr>
-	     　<td></td>
-	     　<td class="text-right"><h4>残り日数</h4></td>
-	     　<td>	     	
-		     	<%= text_field_tag 'medicine_num', @medicine_num, placeholder: @medicine_num, class: "exampleInputEmail2 form-control text-right" %>
+	     　 <td></td>
+	     　 <td class="text-right"><h4>残り日数</h4></td>
+	     　 <td>	     	
+		   	  <%= text_field_tag 'medicine_num', @medicine_num, placeholder: @medicine_num, class: "exampleInputEmail2 form-control text-right" %>
             </td>
             <td><h4>日</h4></td>
 	     　<td>
@@ -85,7 +85,6 @@
          </tr> 
          <% end %>
          </table>
-        
 　    </div>
        
       <!-- Site footer -->
