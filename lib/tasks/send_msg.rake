@@ -22,9 +22,11 @@ namespace :send_msg do
  
         json_time = dest_account.json_time
         #通知する時間かを確認する
-        json_time.each do |j|
+        json_time.each_with_index do |j, idx|
            if j["extend"]  && !j["extended_time"].blank?
             i = Time.parse(j["extended_time"] - jst)
+            j["extend"] = false #再通知はリセット
+            j["extend_time"] = nil #時間も消しておく
           else
             i = Time.parse(j["time"]) - jst
           end
@@ -33,20 +35,19 @@ namespace :send_msg do
           p "projected time: #{tt}"
           if (tt + 5) >= n && n >= (tt - 5)
             p "tyring to tweet for #{dest_account.screen_name}"
-            url = create_reinform_link(i, dest_account.id)
+            url = create_reinform_link(i, idx, dest_account.id)
             p "url: #{url}"
             msg = create_msg(dest_account.screen_name, j["desc"], url)
             tw_client.update(msg)
             break
           end
         end
+        dest_account.update({json_time: json_time}) #json_timeをアップデート
       rescue => e
         Rails.logger.error"<<rake send_msg:first_notification ERROR : #{e.message}>>"
       end
      end
     end
-    
-
     
     desc "薬が少なくなると通知する。（@tasquelからツイート)"
     task :go_to_hospital => :environment do |task|
@@ -92,7 +93,8 @@ namespace :send_msg do
       else
         comment += "だぞ！薬の時間だ！飲まないとやばいぞ！ by タブ君"
       end
-      coment += "¥n30分後に再通知→#{url}" if url != nil
+      comment += '¥n'
+      comment += "30分後に再通知→ #{url}" if url != nil
       return comment      
     end
     
@@ -113,17 +115,18 @@ namespace :send_msg do
       return comment      
     end
     
-    def create_reinform_link(t, id)
+    def create_reinform_link(t, idx, id)
       #再通知のためのリンクを生成する
       reinform_min = 30 #再通知する分数
       t = t + (60*reinform_min)
       url = "http://tasquel.heroku.com/" #本番用url
       if Rails.env == 'development'
         #開発環境なら、urlをローカルホストにする
-        url = "http://127.0.0.1:3000/"
+        #url = "http://127.0.0.1:3000/"
+        url = "http://tasquel.heroku.com/"
       end
       #urlの残り部分をセット
-      url + = "extend/#{id}?hour=#{t.hour}&min=#{t.min}"
+      url += "extend/#{id}?idx=#{idx}&hour=#{t.hour}&min=#{t.min}"
       return url
     end
 end

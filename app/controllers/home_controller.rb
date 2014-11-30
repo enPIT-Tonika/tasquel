@@ -71,6 +71,7 @@ class HomeController < BaseController
   def add_notify
     #通知エントリを追加
     login_required
+    
     j = []
     unless @current_user.json_time.blank?
       j = @current_user.json_time
@@ -87,16 +88,29 @@ class HomeController < BaseController
   def extend
     login_required
     
-     j = []
+    if @current_user.blank?
+      return
+    end
+        
+     j = [{}]
     unless @current_user.json_time.blank?
       j = @current_user.json_time
     end
     
-    h = params[:hour]
-    m = params[:min]
-    t = "#{h}:#{m}"
-    j.push({extend: true, extended_time: t})
-    j = JSON.dump(j) if j.length > 1
-   @current_user.update_attribute(:json_time, j)
+    id = params[:id].to_i
+    if @current_user.id != id
+      flash[:alert] = "異なるユーザに対するリクエストです。requested_id:#{id} / current_user.id:#{@current_user.id}"
+    else  
+      h = params[:hour]
+      m = params[:min]
+      idx = params[:idx].to_i
+  
+      t = "#{h}:#{m}"
+      j[idx]["extend"] = true
+      j[idx]["extended_time"] = t
+      j = JSON.dump(j) if j.length > 1
+     @current_user.update({json_time: j})
+     flash[:notice] = "再通知のリクエストを受け付けました。再通知の時間：#{h}:#{m}"
+   end
   end
 end
