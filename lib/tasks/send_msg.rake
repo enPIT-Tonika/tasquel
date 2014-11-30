@@ -23,13 +23,19 @@ namespace :send_msg do
         json_time = dest_account.json_time
         #通知する時間かを確認する
         json_time.each do |j|
-          i = Time.parse(j["time"]) - jst
+           if j["extend"]  && !j["extended_time"].blank?
+            i = Time.parse(j["extended_time"] - jst)
+          else
+            i = Time.parse(j["time"]) - jst
+          end
           n = i.hour * 60 + i.min #0時からの経過分数を取り出し 
           p "current_time: #{n}"
           p "projected time: #{tt}"
           if (tt + 5) >= n && n >= (tt - 5)
             p "tyring to tweet for #{dest_account.screen_name}"
-            msg = create_msg(dest_account.screen_name, j["desc"])
+            url = create_reinform_link(i, dest_account.id)
+            p "url: #{url}"
+            msg = create_msg(dest_account.screen_name, j["desc"], url)
             tw_client.update(msg)
             break
           end
@@ -73,7 +79,7 @@ namespace :send_msg do
     end
     
     #発言をランダムに作成
-    def create_msg(account, desc)
+    def create_msg(account, desc=nil, url=nil)
       if desc == nil
         desc = "薬の時間"
       else
@@ -86,6 +92,7 @@ namespace :send_msg do
       else
         comment += "だぞ！薬の時間だ！飲まないとやばいぞ！ by タブ君"
       end
+      coment += "¥n30分後に再通知→#{url}" if url != nil
       return comment      
     end
     
@@ -104,5 +111,19 @@ namespace :send_msg do
         comment += "ぞ！病院に行けよ！お薬手帳も持ってくんだぞ！ by タブ君"
       end
       return comment      
+    end
+    
+    def create_reinform_link(t, id)
+      #再通知のためのリンクを生成する
+      reinform_min = 30 #再通知する分数
+      t = t + (60*reinform_min)
+      url = "http://tasquel.heroku.com/" #本番用url
+      if Rails.env == 'development'
+        #開発環境なら、urlをローカルホストにする
+        url = "http://127.0.0.1:3000/"
+      end
+      #urlの残り部分をセット
+      url + = "extend/#{id}?hour=#{t.hour}&min=#{t.min}"
+      return url
     end
 end

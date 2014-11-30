@@ -83,4 +83,20 @@ class HomeController < BaseController
    
    redirect_to home_index_path   
   end
+  
+  def extend
+    login_required
+    
+     j = []
+    unless @current_user.json_time.blank?
+      j = @current_user.json_time
+    end
+    
+    h = params[:hour]
+    m = params[:min]
+    t = "#{h}:#{m}"
+    j.push({extend: true, extended_time: t})
+    j = JSON.dump(j) if j.length > 1
+   @current_user.update_attribute(:json_time, j)
+  end
 end
