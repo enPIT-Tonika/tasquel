@@ -20,7 +20,11 @@
     margin:20% auto;
     width:50%;
     height:60%;
-    
+    h1{
+      .tasu{
+       top:-10px;
+      }
+    }
     #login_logo{
       position:absolute;
       width:100px;
@@ -45,5 +49,17 @@
       border-radius: 10px;
       -webkit-border-radius: 10px;
       -moz-border-radius: 10px;
-    }  
+      p{
+        font-size:18px;
+        line-height:25px;
+        .tasu{
+         top:-5px;
+        }
+      }
+    }
+    #caractors{
+     position:relative;
+     top:-200px;
+     z-index:2;
+    }
 }
