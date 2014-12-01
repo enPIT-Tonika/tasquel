@@ -51,5 +51,6 @@ group :test do
   gem "shoulda"
 end
 
+gem 'bitly'
 #gem "rspec-rails"
 #gem 'rake_shared_context'
