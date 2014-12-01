@@ -11,7 +11,7 @@ namespace :send_msg do
       config.access_token_secret = ENV["TW_ASECRET"]
     end
    
-    jst = (60 * 60 * 9) #UTCからの日本時間のoffset
+    jst = 60 * 60 * 9 #UTCからの日本時間のoffset
     dest_accounts = User.where(notify: true) 
     t = Time.now #現在時刻の取得
     tt = t.hour * 60 + t.min #0時からの経過分数を取り出し 
@@ -89,12 +89,10 @@ namespace :send_msg do
       r = Random.new_seed % 2 #乱数で0か1かを得る
       comment = "@#{account} #{desc}"
       if r == 0
-        comment += "だよ！薬飲んだ？ by カプ君"
+        comment += "だよ！薬飲んだ？ by カプ君　あとで再通知してほしかったら→#{url} "
       else
-        comment += "だぞ！薬の時間だ！飲まないとやばいぞ！ by タブ君"
+        comment += "だぞ！薬の時間だ！飲まないとやばいぞ！ by タブ君　あとで再通知してほしけりゃ→#{url}"
       end
-      comment += '¥n'
-      comment += "30分後に再通知→ #{url}" if url != nil
       return comment      
     end
     
@@ -118,15 +116,29 @@ namespace :send_msg do
     def create_reinform_link(t, idx, id)
       #再通知のためのリンクを生成する
       reinform_min = 30 #再通知する分数
-      t = t + (60*reinform_min)
+      jst = 60 * 60 * 9
+      t = t + (60*reinform_min) + jst
+      h = sprintf("%2d", t.hour)
+      m = sprintf("%2d", t.min)
       url = "http://tasquel.heroku.com/" #本番用url
       if Rails.env == 'development'
         #開発環境なら、urlをローカルホストにする
-        #url = "http://127.0.0.1:3000/"
-        url = "http://tasquel.heroku.com/"
+        url = "http://127.0.0.1:3000/"
+        #url = "http://tasquel.heroku.com/"
       end
       #urlの残り部分をセット
-      url += "extend/#{id}?idx=#{idx}&hour=#{t.hour}&min=#{t.min}"
-      return url
+      url += "extend/#{id}?idx=#{idx}&hour=#{h}&min=#{m}"
+      bitly_url = shorten(url)
+      return bitly_url
+    end
+    
+    def shorten(url)
+      Bitly.use_api_version_3
+      Bitly.configure do |config|
+        config.api_version = 3
+        config.access_token = ENV["BITLY_TOKEN"]
+      end
+      b = Bitly.client.shorten(url)
+      return b.short_url
     end
 end
