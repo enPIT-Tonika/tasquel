@@ -3,7 +3,7 @@
       	<div class="nav nav-pills pull-right">
           	<%= link_to 'ログアウト', logout_path,  {class:  "btn btn-warning active btn-sm"} %>
         </div>
-         <h3 class="muted">ようこそ<%= current_user.name %>さん</h3>
+        <h3 class="muted">ようこそ<%= current_user.name %>さん</h3>
       </div>
 
       <!-- setting -->
@@ -12,7 +12,7 @@
       		<div class="alert alert-success"><%= flash[:notice] %></div>
         <% elsif !flash[:alert].blank? %>
         	<div class="alert alert-warning"><%= flash[:alert] %></div>
-        	<% end %>
+        <% end %>
         <h3>通知の設定：<%= @notify_status %><%= link_to @link_msg,  home_toggle_notify_path,  {class:  "btn btn-primary active  btn-sm pull-right"}  %></h3>
         <br/>
         <h3>薬を飲む時間の登録</h3>
@@ -45,7 +45,7 @@
          <% end %>
 
             <!-- 登録用のフォームの列です。 -->
-            <tr >
+            <tr>
            <%= form_tag("/add_notify", method: "get", class: "form-inline") do %>
 	     	　<td>
 	     	</td>
