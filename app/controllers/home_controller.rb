@@ -113,4 +113,19 @@ class HomeController < BaseController
      flash[:notice] = "再通知のリクエストを受け付けました。再通知の時間：#{h}:#{m}"
    end
   end
+  
+  def modify_medicine_desc
+    login_requred
+    modify_desc = params[:medicine_desc]
+    p modify_desc
+    
+    if @current_user.update({medicine_desc: modify_desc})
+      flash[:notice] = "薬の種類を変更しました。"
+    else
+      flash[:alert] = "薬の種類を更新できませんでした。"
+    end
+    redirect_to home_index_path
+        
+  end
+  
 end

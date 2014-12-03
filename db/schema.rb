@@ -16,35 +16,6 @@ ActiveRecord::Schema.define(version: 20141129043617) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "books", force: true do |t|
-    t.string   "title"
-    t.string   "auhor"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "families", force: true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "memos", force: true do |t|
-    t.text     "taskmemo"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "task_boards", force: true do |t|
-    t.text     "taskText"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "family_id"
-    t.time     "tasktime"
-  end
-
-  add_index "task_boards", ["family_id"], name: "index_task_boards_on_family_id", using: :btree
-
   create_table "users", force: true do |t|
     t.string   "provider"
     t.string   "uid"
@@ -53,8 +24,8 @@ ActiveRecord::Schema.define(version: 20141129043617) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "notify",        default: false
-    t.integer  "medicine_num"
     t.json     "json_time"
+    t.integer  "medicine_num"
     t.text     "medicine_desc"
   end
 
