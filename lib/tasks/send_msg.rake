@@ -24,7 +24,7 @@ namespace :send_msg do
         #通知する時間かを確認する
         json_time.each_with_index do |j, idx|
            if j["extend"]  && !j["extended_time"].blank?
-            i = Time.parse(j["extended_time"] - jst)
+            i = Time.parse(j["extended_time"]) - jst
             j["extend"] = false #再通知はリセット
             j["extend_time"] = nil #時間も消しておく
           else
