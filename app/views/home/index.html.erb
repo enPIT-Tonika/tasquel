@@ -35,7 +35,6 @@
 	     	　<td></td>
 	     	　<td><%= t["desc"] %></td>
 	     	　<td><%= t["time"] %></td>
-	     	　<td><%= t["medicine_desc"] %></td>
 	     	　<td>
 	     		<a href="/del_notify/<%= idx %>" class="btn btn-default btn-lg">
 				  <span class="glyphicon glyphicon-trash"></span> 削除
@@ -55,9 +54,6 @@
 	     	　<td>
 	     		<%= text_field_tag 'time', @time, placeholder: "例）15:00", class: "exampleInputEmail2 form-control" %>
 	     	　</td>
-	     	 <td>
-	     		<%= text_field_tag 'medicine_desc', @medicine_desc, placeholder: "例）錠剤", class: "exampleInputEmail2 form-control" %>
-	     	　</td>
 	     	　<td>
 	     	    <!--<%= submit_tag '+ 追加' , class:"btn btn-default btn-lg" %>-->
 	     	    <input class="btn btn-default btn-lg" name="commit" type="submit" value="+ 追加" />
@@ -68,7 +64,12 @@
        </table>
        <!-- DBからの表示の終了 --> 
        <br/>
-       
+       <h3>薬の種類</h3>
+       <table>
+       	<tbody>
+       		<tr><td><%= @medicine_desc %></td></tr>
+       	</tbody>	
+       </table>
        <h3 class="pull-left">薬を取りに行くまでの日数</h3>       
 　      　<table class="table">
 	        <%= form_tag("/modify_medicine_num", method: "get", class:"form-inline") do %>

@@ -8,6 +8,8 @@ class HomeController < BaseController
       unless @current_user.json_time.blank?
         @time_info = @current_user.json_time
       end
+      #薬の情報の取得
+      @medicine_desc = @current_user.medicine_desc
       #通知ステータスの情報
       if @current_user.notify == true
           @notify_status = "ON"
