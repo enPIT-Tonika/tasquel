@@ -18,7 +18,7 @@
 #inputArea{
     position:relative;
     margin:20% auto;
-    width:50%;
+    width:80%;
     height:60%;
     h1{
       .tasu{
@@ -29,9 +29,9 @@
       position:absolute;
       width:100px;
       height:100px;
-      top:-50px;
-      left:-80px;
-      z-index:0;
+      top:-20px;
+      left:-30px;
+      z-index:2;
     }
     #loginBtn{
       color:#ffffff;
