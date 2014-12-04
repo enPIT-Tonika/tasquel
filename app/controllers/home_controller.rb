@@ -117,17 +117,18 @@ class HomeController < BaseController
   end
   
   def modify_medicine_desc
-    login_requred
+    login_required
     modify_desc = params[:medicine_desc]
     p modify_desc
     
     if @current_user.update({medicine_desc: modify_desc})
       flash[:notice] = "薬の種類を変更しました。"
+       @medicine_desc = modify_desc;
     else
       flash[:alert] = "薬の種類を更新できませんでした。"
     end
     redirect_to home_index_path
-        
+     
   end
   
 end
