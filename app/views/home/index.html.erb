@@ -1,4 +1,4 @@
-   <div class="container">
+<div class="container">
       <div class="masthead">
       	<div class="nav nav-pills pull-right">
           	<%= link_to 'ログアウト', logout_path,  {class:  "btn btn-warning active btn-sm"} %>
@@ -23,7 +23,6 @@
         　　　<th>#</th>
         　　　<th>タイミング</th>
         　　　<th>時間</th>
-        　　　<th>種類</th>
         　　　<th>編集</th>
         　　</tr>
      
@@ -35,7 +34,6 @@
 	     	　<td></td>
 	     	　<td><%= t["desc"] %></td>
 	     	　<td><%= t["time"] %></td>
-	     	　<td><%= t["medicine_desc"] %></td>
 	     	　<td>
 	     		<a href="/del_notify/<%= idx %>" class="btn btn-default btn-lg">
 				  <span class="glyphicon glyphicon-trash"></span> 削除
@@ -55,9 +53,6 @@
 	     	　<td>
 	     		<%= text_field_tag 'time', @time, placeholder: "例）15:00", class: "exampleInputEmail2 form-control" %>
 	     	　</td>
-	     	 <td>
-	     		<%= text_field_tag 'medicine_desc', @medicine_desc, placeholder: "例）錠剤", class: "exampleInputEmail2 form-control" %>
-	     	　</td>
 	     	　<td>
 	     	    <!--<%= submit_tag '+ 追加' , class:"btn btn-default btn-lg" %>-->
 	     	    <input class="btn btn-default btn-lg" name="commit" type="submit" value="+ 追加" />
@@ -68,7 +63,19 @@
        </table>
        <!-- DBからの表示の終了 --> 
        <br/>
-       
+       <h3>薬の種類</h3>
+        <table class="table">
+        	<tr>
+       		  <%= form_tag("/modify_medicine_desc", method: "get", class: "form-inline") do %>
+       		  <td>
+       			<%= text_area_tag 'medicine_desc', @medicine_desc, placeholder: @medicine_desc, class: "exampleInputEmail6 form-control resizable", id:"desc_text" %>
+       		  </td>
+       	  　　<td>
+	           <input class="exampleInputEmail6 btn btn-default btn-lg" id="desc_input" name="commit" type="submit" value="+ 追加" />
+	     	 </td>
+	     	  <% end %>
+       		</tr>
+       </table>
        <h3 class="pull-left">薬を取りに行くまでの日数</h3>       
 　      　<table class="table">
 	        <%= form_tag("/modify_medicine_num", method: "get", class:"form-inline") do %>
