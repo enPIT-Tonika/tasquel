@@ -6,7 +6,7 @@ tasquel
 毎日薬を飲んでいて、薬の飲み忘れを防ぎたい人向けのTasquelというプロダクトは、お薬リマインダーアプリです。 これは忘れずに薬を飲むよう教えてくれる機能を備えていて、普通のToDo管理ソフトとは違って、かわいいキャラクターが通知を行ってくれます。
 
 # サービスURL
-[http://tasquel.herokuapp.com/](http://tasquel.herokuapp.com/)
+[http://tasquel-enpit.herokuapp.com/](http://tasquel-enpit.herokuapp.com/)
 
 # 開発メンバー
 - Yoshiki Eguchi

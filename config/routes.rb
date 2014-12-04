@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy', :as => :logout
   get 'modify_medicine_num', :to=> 'home#modify_medicine_num'
   get 'modify_medicine_desc', :to=> 'home#modify_medicine_desc'
-  get "extend/:id", :to=> 'home#extend'
+  #get "extend/:id", :to=> 'home#extend'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
