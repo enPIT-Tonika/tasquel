@@ -11,10 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141129043617) do
+ActiveRecord::Schema.define(version: 20141204140004) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "done_lists", force: true do |t|
+    t.integer  "user_id"
+    t.text     "tweet_id"
+    t.text     "desc"
+    t.boolean  "is_reply"
+    t.datetime "reply_time"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "done_lists", ["user_id"], name: "index_done_lists_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "provider"

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 
+  tweet_id: 1
+  desc: MyText
+  is_reply: false
+  reply_time: 2014-12-04 13:30:33
+
+two:
+  user_id: 
+  tweet_id: 1
+  desc: MyText
+  is_reply: false
+  reply_time: 2014-12-04 13:30:33

@@ -3,14 +3,6 @@ require 'twitter'
 namespace :send_msg do
   desc "アカウントtasquelを使って、メッセージを自動ツイート"  
   task :first_notification => :environment  do |task|
-     #Twitter設定：環境変数から値を読み込む
-    tw_client = Twitter::REST::Client.new do |config|
-      config.consumer_key = ENV["TW_APPID"]
-      config.consumer_secret = ENV["TW_SECRET"]
-      config.access_token = ENV["TW_ATOKEN"]
-      config.access_token_secret = ENV["TW_ASECRET"]
-    end
-   
     jst = 60 * 60 * 9 #UTCからの日本時間のoffset
     dest_accounts = User.where(notify: true) 
     t = Time.now #現在時刻の取得
@@ -29,7 +21,8 @@ namespace :send_msg do
           if (tt + 5) >= n && n >= (tt - 5)
             p "tyring to tweet for #{dest_account.screen_name}"
             msg = create_msg(dest_account.screen_name, j["desc"])
-            tw_client.update(msg)
+            ret = $tw_client.update(msg)
+            add_done_list_entry(ret.id, dest_account.id, j["desc"])
             break
           end
         end
@@ -39,16 +32,33 @@ namespace :send_msg do
      end
     end
     
+    desc "自分の通知へのリプライを探し、薬を飲んだとみなす"  
+    task :check_reply => :environment  do |task|
+      jst = 60 * 60 * 9 #UTCからの日本時間のoffset
+      t = Time.now + jst #現在時刻の取得
+      begin
+        lists = DoneList.where(is_reply: false)  #通知リストのうち、まだ返信がないエントリのみ抽出
+        mentions = $tw_client.mentions #自分へのメンションを取得
+        mentions.each do |m|
+          mentioned_user = $tw_client.status(m.id)
+          next if m.in_reply_to_tweet_id.nil?
+          entry = lists.select{|item|item.tweet_id == m.in_reply_to_tweet_id.to_s}
+          next if entry.length < 1
+          p entry
+          update_entry = DoneList.find(entry[0].id)
+          dest_account= User.find(update_entry.user_id)
+          update_entry.update_attributes({is_reply: true, reply_time: t})
+          msg = create_reply_msg(dest_account.screen_name)
+          $tw_client.update(msg)
+        end
+      rescue => e
+         Rails.logger.error"<<rake send_msg:check_reply ERROR : #{e.message}>>"
+      end
+    end
+    
     desc "薬が少なくなると通知する。（@tasquelからツイート)"
     task :go_to_hospital => :environment do |task|
-        p "executing rake send_msg:go_to_hospital"
-        tw_client = Twitter::REST::Client.new do |config|
-          config.consumer_key = ENV["TW_APPID"]
-          config.consumer_secret = ENV["TW_SECRET"]
-          config.access_token = ENV["TW_ATOKEN"]
-          config.access_token_secret = ENV["TW_ASECRET"]
-        end
-        
+        p "executing rake send_msg:go_to_hospital"     
         dest_accounts = User.all
         dest_accounts.each do |dest_account|
            p "#{dest_account.screen_name} :"
@@ -61,7 +71,7 @@ namespace :send_msg do
              if num < 8 #日数を確認
               p "tyring to tweet for #{dest_account.screen_name}"
               msg = create_go_hosp_msg(dest_account.screen_name,num)
-              tw_client.update(msg) 
+              $tw_client.update(msg) 
             end
           rescue => e
               Rails.logger.error"<<rake send_msg:go_to_hospital ERROR : #{e.message}>>"
@@ -78,10 +88,13 @@ namespace :send_msg do
       end
       r = Random.new_seed % 2 #乱数で0か1かを得る
       comment = "@#{account} #{desc}"
+      if Rails.env == 'development'
+        comment = "#{account} #{desc}"
+      end
       if r == 0
         comment += "だよ！薬飲んだ？ by カプ君"
       else
-        comment += "だぞ！薬の時間だ！飲まないとやばいぞ！ by タブ君"
+        comment += "だぞ！飲まないとやばいぞ！ by タブ君"
       end
       return comment      
     end
@@ -101,5 +114,25 @@ namespace :send_msg do
         comment += "ぞ！病院に行けよ！お薬手帳も持ってくんだぞ！ by タブ君"
       end
       return comment      
+    end
+    
+    def create_reply_msg(account)
+      r = Random.new_seed % 2 #乱数で0か1かを得る
+      comment = "@#{account} "
+      if r == 0
+        comment += "薬ちゃんと飲んだんだね！さすが！ by カプ君"
+      else
+        comment += "薬ちゃんと飲んだな！えらいぜ！ by タブ君"
+      end
+      return comment      
+    end
+    
+    def add_done_list_entry(tweet_id, user_id, desc)
+      DoneList.create({
+        user_id: user_id,
+        tweet_id: tweet_id.to_s,
+        desc: desc,
+        is_reply: false
+      })
     end
 end
