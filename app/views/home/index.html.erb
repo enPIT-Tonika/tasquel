@@ -71,7 +71,7 @@
        			<%= text_area_tag 'medicine_desc', @medicine_desc, placeholder: @medicine_desc, class: "exampleInputEmail6 form-control resizable", id:"desc_text" %>
        		  </td>
        	  　　<td>
-	           <input class="exampleInputEmail6 btn btn-default btn-lg" id="desc_input" name="commit" type="submit" value="+ 追加" />
+	           <input class="exampleInputEmail6 btn btn-default btn-lg" id="desc_input" name="commit" type="submit" value="変更" />
 	     	 </td>
 	     	  <% end %>
        		</tr>
@@ -92,6 +92,21 @@
          </tr> 
          <% end %>
          </table>
+         <h3 class="pull-left">お薬服用の履歴</h3> 
+         <table class="table">
+         		<% if @history.blank? %>
+	         		<tr>
+	         			<td>まだ履歴はありません。</td>
+	         			<td></td>
+	         		</tr>
+         		<% else %>
+	         		<% @history.each do |h| %>
+	         		<tr>
+	         			<td><h4><%= h.reply_time.strftime("%Y年%m月%d日 %H時%M分ごろ") %> に<%= generate_desc(h.desc) %></h4></td>
+	         		</tr>
+	         		<% end %>
+         		<% end %>
+         </table>	
 　    </div>
        
       <!-- Site footer -->
