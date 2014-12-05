@@ -10,6 +10,8 @@ class HomeController < BaseController
       end
       #薬の情報の取得
       @medicine_desc = @current_user.medicine_desc
+      #薬の服用履歴を取得
+      @history = DoneList.where(user_id: @current_user.id).where(is_reply: true)
       #通知ステータスの情報
       if @current_user.notify == true
           @notify_status = "ON"
