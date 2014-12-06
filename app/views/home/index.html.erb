@@ -17,15 +17,15 @@
         <br/>
         <h3>薬を飲む時間の登録</h3>
  
-　　　　　<table class="table">
+		<%= form_tag("/add_notify", method: "get", class: "form-inline") do %> 
+　　　<table class="table">
         　<thead>
         　　<tr>
         　　　<th>#</th>
         　　　<th>タイミング</th>
         　　　<th>時間</th>
         　　　<th>編集</th>
-        　　</tr>
-     
+        　　</tr>    
 <!-- DBデータの表示エリア   -->
         　<tbody>
         	<!-- DBからのデータを繰り返し表示させる列です。 -->
@@ -43,8 +43,7 @@
          <% end %>
 
             <!-- 登録用のフォームの列です。 -->
-            <tr>
-           <%= form_tag("/add_notify", method: "get", class: "form-inline") do %>
+            <tr>          
 	     	　<td>
 	     	</td>
 	     	　<td>
@@ -57,10 +56,10 @@
 	     	    <!--<%= submit_tag '+ 追加' , class:"btn btn-default btn-lg" %>-->
 	     	    <input class="btn btn-default btn-lg" name="commit" type="submit" value="+ 追加" />
 	     	　</td>
-         　 <% end %>
          　　</tr>
          </tbody>
        </table>
+       <% end %>
        <!-- DBからの表示の終了 --> 
        <br/>
        <h3>薬の種類</h3>
@@ -76,22 +75,22 @@
 	     	  <% end %>
        		</tr>
        </table>
-       <h3 class="pull-left">薬を取りに行くまでの日数</h3>       
+       <h3 class="pull-left">薬を取りに行くまでの日数</h3>
+       <%= form_tag("/modify_medicine_num", method: "get", class:"form-inline") do %>       
 　      　<table class="table">
-	        <%= form_tag("/modify_medicine_num", method: "get", class:"form-inline") do %>
          	<tr>
 	     　 <td></td>
 	     　 <td class="text-right"><h4>残り日数</h4></td>
 	     　 <td>	     	
 		   	  <%= text_field_tag 'medicine_num', @medicine_num, placeholder: @medicine_num, class: "exampleInputEmail2 form-control text-right" %>
-            </td>
+              </td>
             <td><h4>日</h4></td>
 	     　<td>
 	     	<%= submit_tag '設定' , class:"btn btn-default btn-lg" %>
 		 　</td>
          </tr> 
-         <% end %>
          </table>
+         <% end %>
          <h3 class="pull-left">お薬服用の履歴</h3> 
          <table class="table">
          		<% if @history.blank? %>
@@ -111,7 +110,7 @@
        
       <!-- Site footer -->
       <footer class="footer">
-        <p>&copy; Company 2014</p>
+        <p>&copy; Team Tonika 2014</p>
       </footer>
     </div> <!-- /container -->
 </div>

@@ -11,7 +11,7 @@ class HomeController < BaseController
       #薬の情報の取得
       @medicine_desc = @current_user.medicine_desc
       #薬の服用履歴を取得
-      @history = DoneList.where(user_id: @current_user.id).where(is_reply: true)
+      @history = DoneList.where(user_id: @current_user.id).where(is_reply: true).limit(10)
       #通知ステータスの情報
       if @current_user.notify == true
           @notify_status = "ON"
@@ -62,13 +62,14 @@ class HomeController < BaseController
     login_required
     
     idx = params[:idx].to_i
-    j = @current_user.json_time
-    j.delete_at(idx)
-    logger.info("current json_data : #{j}")
-     j = JSON.dump(j) if j.length > 1
-    @current_user.update_attribute(:json_time, [])
-    @current_user.update_attribute(:json_time, j) if j.length > 0
-    
+    unless @current_user.json_time.blank?
+      j = @current_user.json_time
+      j.delete_at(idx)
+      logger.info("current json_data : #{j}")
+       j = JSON.dump(j) if j.length > 1
+      @current_user.update_attribute(:json_time, [])
+      @current_user.update_attribute(:json_time, j) if j.length > 0
+    end
     redirect_to home_index_path
   end
   
