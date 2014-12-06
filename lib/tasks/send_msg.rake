@@ -49,6 +49,8 @@ namespace :send_msg do
           dest_account= User.find(update_entry.user_id)
           update_entry.update_attributes({is_reply: true, reply_time: t})
           msg = create_reply_msg(dest_account.screen_name)
+          p "tyring to tweet for #{dest_account.screen_name}"
+          p msg
           $tw_client.update(msg)
         end
       rescue => e
