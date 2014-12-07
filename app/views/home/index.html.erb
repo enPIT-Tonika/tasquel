@@ -49,8 +49,8 @@
 	     	　<td>
 	     		<%= text_field_tag 'desc', @desc, placeholder: "例）昼", class: "exampleInputEmail2 form-control" %>
 	     	　</td>
-	     	　<td>
-	     		<%= text_field_tag 'time', @time, placeholder: "例）15:00", class: "exampleInputEmail2 form-control" %>
+	     	　<td id="time_area">
+	     		<%= time_select(:time, @time, { :minute_step => 5, :default => { :hour => 12, :minute => 0} }, { :class => 'exampleInputEmail2 form-control' }) %>
 	     	　</td>
 	     	　<td>
 	     	    <!--<%= submit_tag '+ 追加' , class:"btn btn-default btn-lg" %>-->
