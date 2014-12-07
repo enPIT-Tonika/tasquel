@@ -9,16 +9,16 @@
 	     <p class="text-center">Twitterアカウントでログイン<br/></p><br/>
 	    </div>
 	    <div class="row placeholders" id="characters">
-	    	<div class="col-xs-4 col-sm-4 placeholder">
-	    	  <%= image_tag 'kapu.png', alt:'kapukun', class:'img-responsive' %>
-              <h4>カプくん</h4>
+	    	<div class="col-md-4 col-sm-4 col-xs-2 placeholder">
+	    	  <%= image_tag 'kapu.png', alt:'kapukun', class:'img-responsive hidden-xs' %>
+              <h4 id="kapu" class="hidden-xs">カプくん</h4>
             </div>
-            <div class="col-xs-4 col-sm-4"><br/><br/><br/>
+            <div class="col-xs-8 col-sm-4 ">
             	<%= link_to 'Log in', '/auth/twitter', {class:"btn btn-primary btn-lg btn-block", id:"loginBtn"}%>
             </div>
-            <div class="col-xs-4 col-sm-4 placeholder">
-              <%= image_tag 'tabu.png', alt:'tabukun', class:'img-responsive' %>
-              <h4>タプくん</h4>
+            <div class="col-md-3 col-sm-3 col-xs-2 placeholder">
+              <%= image_tag 'tabu.png', alt:'tabukun', class:'img-responsive hidden-xs' %>
+              <h4 id="tabu" class="hidden-xs">タブくん</h4>
             </div>
 		</div>
 		</div>
