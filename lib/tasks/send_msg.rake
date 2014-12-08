@@ -1,7 +1,7 @@
 require 'twitter'
 
 namespace :send_msg do
-  desc "アカウントtasquelを使って、メッセージを自動ツイート"  
+  desc "薬を飲んだかどうかを確認するメッセージを自動ツイート"  
   task :first_notification => :environment  do |task|
     jst = 60 * 60 * 9 #UTCからの日本時間のoffset
     dest_accounts = User.where(notify: true) 
@@ -21,6 +21,7 @@ namespace :send_msg do
           if (tt + 5) >= n && n >= (tt - 5)
             p "tyring to tweet for #{dest_account.screen_name}"
             msg = create_msg(dest_account.screen_name, j["desc"])
+            #p msg
             ret = $tw_client.update(msg)
             add_done_list_entry(ret.id, dest_account.id, j["desc"])
             break
@@ -58,7 +59,7 @@ namespace :send_msg do
       end
     end
     
-    desc "薬が少なくなると通知する。（@tasquelからツイート)"
+    desc "薬が少なくなると通知する。"
     task :go_to_hospital => :environment do |task|
         p "executing rake send_msg:go_to_hospital"     
         dest_accounts = User.all
@@ -88,17 +89,11 @@ namespace :send_msg do
       else
         desc += "の薬の時間"
       end
-      r = Random.new_seed % 2 #乱数で0か1かを得る
-      comment = "@#{account} #{desc}"
-      if Rails.env == 'development'
-        comment = "#{account} #{desc}"
-      end
-      if r == 0
-        comment += "だよ！薬飲んだ？ by カプ君"
-      else
-        comment += "だぞ！飲まないとやばいぞ！ by タブ君"
-      end
-      return comment      
+      comment  = "@#{account} "
+      num = Comments.notify.length
+      r = Random.new_seed % num
+      comment  += Comments.notify[r].gsub(/#DESC#/, desc)   
+      return comment     
     end
     
     #病院へ行くことを促す発言をランダムに作成

@@ -1,0 +1,15 @@
+defaults: &defaults
+  notify:
+    - "#DESC#だよ！薬飲んだ？ by カプ君"
+    - "#DESC#だぞ！飲まないとやばいぞ！ by タブ君"
+    - "#DESC#になったよ。薬はもう飲んだかな？ by カプ君"
+    - "#DESC#になったぞ！薬はもう飲んだのか？ by タブ君"
+    
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

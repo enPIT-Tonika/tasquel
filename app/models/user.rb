@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   has_many :done_list
   
   def self.create_with_omniauth(auth)
-    instruction(auth['info']['nickname'])
+    #instruction(auth['info']['nickname'])
     create! do |user|
       user.provider = auth['provider']
       user.uid = auth['uid']
