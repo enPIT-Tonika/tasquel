@@ -81,8 +81,8 @@ class HomeController < BaseController
     unless @current_user.json_time.blank?
       j = @current_user.json_time
     end
-    t = params[:time]
-    j.push({desc: params[:desc], time: params[:time]})
+    t = "#{params[:time(4i)]}:#{params[:time(5i)}" 
+    j.push({desc: params[:desc], time: t})
     j = JSON.dump(j) if j.length > 1
     #j.sort! {|a,b| Time.parse(a["time"]) <=> Time.parse(b["time"])}
    @current_user.update_attribute(:json_time, j)
