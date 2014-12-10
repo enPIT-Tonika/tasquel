@@ -35,8 +35,10 @@ class HomeController < BaseController
     
     if @current_user.notify == true
       @current_user.update_attribute(:notify, false)
+      flash[:notice] = "通知をOFFにしました。"      
    else
      @current_user.update_attribute(:notify,  true)
+     flash[:notice] = "通知をONにしました。通知を受け取るには@TasqelTonikaのアカウントのフォローもお願いします。"
     end
     redirect_to home_index_path
   end
