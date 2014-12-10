@@ -3,6 +3,8 @@ require 'twitter'
 namespace :send_msg do
   desc "薬を飲んだかどうかを確認するメッセージを自動ツイート"  
   task :first_notification => :environment  do |task|
+    get_followers
+    p $followers
     jst = 60 * 60 * 9 #UTCからの日本時間のoffset
     dest_accounts = User.where(notify: true) 
     t = Time.now #現在時刻の取得
@@ -10,6 +12,13 @@ namespace :send_msg do
     dest_accounts.each do |dest_account|
       p "#{dest_account.screen_name} :"
       begin
+        #そのユーザがTasquelアカウントをフォローしているかどうかを確認する
+        if !($followers.blank?) && $followers.index(dest_account.uid) != nil
+            p "Confirmd that #{dest_account.uid} follows Tasquel account"
+        else
+          p "#{dest_account.uid} does not follow Tasquel account"
+          next
+        end
         next if dest_account.json_time.blank?
         json_time = dest_account.json_time
         #通知する時間かを確認する
@@ -89,13 +98,21 @@ namespace :send_msg do
         num = Comments.tips.length
         r = Random.new_seed % num
         msg = Comments.tips[r]
-        p msg
+        p "msg: #{msg}"
         $tw_client.update(msg)
       rescue => e
               Rails.logger.error"<<rake send_msg:tips ERROR : #{e.message}>>"
       end
     end
 
+    #フォロワー情報を取得
+    def get_followers
+      f = $tw_client.follower_ids().to_h 
+      $followers = f[:ids]
+      p "Followers list:"
+      $followers.map!{|f|f.to_s}
+      p $followers
+    end
     
     #発言をランダムに作成
     def create_msg(account, desc=nil)
