@@ -10,16 +10,10 @@ namespace :send_msg do
     t = Time.now #現在時刻の取得
     tt = t.hour * 60 + t.min #0時からの経過分数を取り出し 
     dest_accounts.each do |dest_account|
-      p "#{dest_account.screen_name} :"
       begin
-        #そのユーザがTasquelアカウントをフォローしているかどうかを確認する
-        if !($followers.blank?) && $followers.index(dest_account.uid) != nil
-            p "Confirmd that #{dest_account.uid} follows Tasquel account"
-        else
-          p "#{dest_account.uid} does not follow Tasquel account"
-          next
-        end
-        next if dest_account.json_time.blank?
+        p "#{dest_account.screen_name} :"
+        next if dest_account.json_time.blank? #通知時間の指定がなければ抜ける
+        next unless check_follow(dest_account.uid) #ユーザがフォローしていなければ抜ける
         json_time = dest_account.json_time
         #通知する時間かを確認する
         json_time.each_with_index do |j, idx|
@@ -49,19 +43,24 @@ namespace :send_msg do
       begin
         lists = DoneList.where(is_reply: false)  #通知リストのうち、まだ返信がないエントリのみ抽出
         mentions = $tw_client.mentions #自分へのメンションを取得
+        #メンションの中に、薬の通知に対するリプライがないかを確認
         mentions.each do |m|
-          mentioned_user = $tw_client.status(m.id)
-          next if m.in_reply_to_tweet_id.nil?
-          entry = lists.select{|item|item.tweet_id == m.in_reply_to_tweet_id.to_s}
-          next if entry.length < 1
+          #mentioned_user = $tw_client.status(m.id)
+          next if m.in_reply_to_tweet_id.nil? #そのメンションがリプライでなければ抜ける
+          entry = lists.select{|item|item.tweet_id == m.in_reply_to_tweet_id.to_s} #メンションの中に通知対象ユーザがいるかを検索
+          next if entry.length < 1 #通知対象ユーザが見つからなければ抜ける
           p entry
-          update_entry = DoneList.find(entry[0].id)
-          dest_account= User.find(update_entry.user_id)
-          update_entry.update_attributes({is_reply: true, reply_time: t})
-          msg = create_reply_msg(dest_account.screen_name)
-          p "tyring to tweet for #{dest_account.screen_name}"
-          p msg
-          $tw_client.update(msg)
+          #通知対象ユーザからのリプライがあれば、通知リストのアップデートを行う
+          update_entry = DoneList.find(entry[0].id) #アップデート対象エントリの抽出
+          update_entry.update_attributes({is_reply: true, reply_time: t}) #アップデート
+          dest_account= User.find(update_entry.user_id) #対象ユーザの情報の抽出
+          #ユーザがフォローしていればリプライを返す
+          if check_follow(dest_account.uid) 
+            msg = create_reply_msg(dest_account.screen_name)
+            p "tyring to tweet for #{dest_account.screen_name}"
+            p msg
+            $tw_client.update(msg)
+          end
         end
       rescue => e
          Rails.logger.error"<<rake send_msg:check_reply ERROR : #{e.message}>>"
@@ -79,12 +78,13 @@ namespace :send_msg do
            num -= 1 if num > 0 #残り日数を-1
            begin
              dest_account.update_attributes({medicine_num: num}) #日数をアップデート
-             next if dest_account.notify == false
-             if num < 8 #日数を確認
+             next if dest_account.notify == false  #通知がオフなら抜ける                     
+             next if num > 7 #残り日数が一週間以上なら抜ける
+             if check_follow(dest_account.uid) #ユーザがフォローしていればリプライを返す
               p "tyring to tweet for #{dest_account.screen_name}"
               msg = create_go_hosp_msg(dest_account.screen_name,num)
               $tw_client.update(msg) 
-            end
+             end
           rescue => e
               Rails.logger.error"<<rake send_msg:go_to_hospital ERROR : #{e.message}>>"
           end 
@@ -145,6 +145,7 @@ namespace :send_msg do
       return comment      
     end
     
+    #薬を飲んだユーザに対する返信を作成
     def create_reply_msg(account)
       r = Random.new_seed % 2 #乱数で0か1かを得る
       comment = "@#{account} "
@@ -163,5 +164,16 @@ namespace :send_msg do
         desc: desc,
         is_reply: false
       })
+    end
+    
+    #そのユーザがTasquelアカウントをフォローしているかどうかを確認する
+    def check_follow(uid)
+      result = false
+      p "Checking follow status of #{uid}"
+      if !($followers.blank?) && $followers.index(uid) != nil
+          p "Confirmd that #{uid} follows Tasquel account"
+          result = true
+      end
+      return result
     end
 end
