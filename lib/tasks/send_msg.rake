@@ -82,6 +82,21 @@ namespace :send_msg do
         end 
     end
     
+    desc "Tipsをランダムにtweet"
+    task :tips => :environment do |task|
+      begin
+        p "executing rake send_msg:tips"
+        num = Comments.tips.length
+        r = Random.new_seed % num
+        msg = Comments.tips[r]
+        p msg
+        $tw_client.update(msg)
+      rescue => e
+              Rails.logger.error"<<rake send_msg:tips ERROR : #{e.message}>>"
+      end
+    end
+
+    
     #発言をランダムに作成
     def create_msg(account, desc=nil)
       if desc == nil
