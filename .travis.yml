@@ -10,6 +10,6 @@ deploy:
   provider: heroku
   api_key:
     secure: jvF6onG0Vesp4NOSubQmmR1oSE031C8bIiL23Wo602K7LVcgfZLMkjRFVHc9UJDSQSPyGw9BBZ3/lQo1X9BwgQDOdWSl3daGstGsfuFSsovdJS9s6dRpcnnfLfWKnMD6Z2dyRsS8SxI3Tvl7jzHBPxWLAMKGUn3HPTmwWgAVlX0=
-  app: tasquel-enpit
+  app: tasquel-tonika
   on:
     repo: enPIT-Tonika/tasquel
