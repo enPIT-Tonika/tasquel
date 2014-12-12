@@ -170,6 +170,7 @@ namespace :send_msg do
     def check_follow(uid)
       result = false
       p "Checking follow status of #{uid}"
+      get_followers if $followers.blank?  #$followerに値が入っていなければ取得
       if !($followers.blank?) && $followers.index(uid) != nil
           p "Confirmd that #{uid} follows Tasquel account"
           result = true
